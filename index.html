@@ -1,203 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dijital OpEx | Operasyonel Mükemmellik</title>
-  <!-- Basit, tek dosyalık, GitHub Pages için hazır şablon -->
+  <title>Dijital OpEx – Operasyonel Mükemmellik</title>
+  <meta name="description" content="Dijital OpEx: teknolojinin itici güç olduğu, verimlilik ve kârlılık odaklı saha dönüşüm yaklaşımı." />
+  <meta property="og:title" content="Dijital OpEx – Operasyonel Mükemmellik" />
+  <meta property="og:description" content="Teknoloji temelli operasyonel mükemmellik ve saha dönüşümü." />
+  <meta property="og:image" content="assets/images/social-card.jpg" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="icon" href="assets/images/favicon.png" />
   <style>
     :root {
-      --brand: #0a5bd8;      /* Ana marka rengi (kolayca değiştir) */
-      --brand-dark: #0849ad; /* Hover/aktif tonu */
-      --text: #1f2937;       /* Gövde metin rengi */
-      --muted: #6b7280;      /* İkincil metin */
-      --bg: #f7f9fc;         /* Arka plan */
-      --white: #ffffff;
+      --bg: #0b1020;
+      --panel: #111833;
+      --muted: #b5c0d0;
+      --text: #eaf0ff;
+      --brand: #6ae3ff;
+      --accent: #7df7c9;
+      --grid-gap: 1rem;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    * { box-sizing: border-box }
-    html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: var(--bg); }
-    a { color: var(--brand); text-decoration: none }
-    a:hover { text-decoration: underline }
-    .container { width: min(1100px, 92%); margin: 0 auto }
-
-    /* Üst çubuk */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: var(--white); border-bottom: 1px solid #e5e7eb;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      background: url('assets/images/bg-pattern.png') repeat, radial-gradient(1200px 800px at 10% -10%, rgba(106,227,255,.18), rgba(0,0,0,0)),radial-gradient(900px 600px at 90% 10%, rgba(125,247,201,.12), rgba(0,0,0,0)),var(--bg);
+      line-height: 1.5;
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0 }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px }
-    .logo-badge { width: 34px; height: 34px; border-radius: 8px; background: var(--brand); display: grid; place-items: center; color: var(--white); font-weight: 800 }
-    .nav a { margin-left: 16px; font-weight: 600; color: #374151 }
-    .nav a:hover { color: var(--brand) }
-
-    /* Hero */
-    .hero { padding: 64px 0 36px; background: radial-gradient(60% 80% at 50% 0%, #eaf2ff 0%, transparent 70%) }
-    .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; margin: 0 0 12px }
-    .hero p { font-size: clamp(16px, 2.4vw, 18px); color: var(--muted); margin: 0 0 20px }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap }
-    .btn { display: inline-block; padding: 12px 18px; border-radius: 10px; font-weight: 700; border: 1px solid transparent }
-    .btn.primary { background: var(--brand); color: var(--white) }
-    .btn.primary:hover { background: var(--brand-dark) }
-    .btn.ghost { background: var(--white); color: var(--text); border-color: #e5e7eb }
-
-    /* Bölüm başlıkları */
-    section { padding: 56px 0 }
-    .section-title { font-size: clamp(22px, 3vw, 28px); margin: 0 0 10px }
-    .section-sub { color: var(--muted); margin: 0 0 28px }
-
-    /* Kart ızgarası */
-    .grid { display: grid; gap: 18px }
-    @media (min-width: 820px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr) } }
-    .card { background: var(--white); border: 1px solid #e5e7eb; border-radius: 14px; padding: 18px; box-shadow: 0 6px 20px rgba(0,0,0,.04) }
-    .card h3 { margin: 0 0 8px; font-size: 18px }
-    .card p { margin: 0; color: var(--muted); font-size: 15px }
-
-    /* Süreç adımları */
-    .steps { counter-reset: step }
-    .step { display: grid; grid-template-columns: 46px 1fr; gap: 12px; align-items: start; padding: 14px 0 }
-    .step::before { counter-increment: step; content: counter(step); width: 46px; height: 46px; border-radius: 10px; background: var(--brand); color: var(--white); display: grid; place-items: center; font-weight: 800 }
-
-    /* Alt bilgi */
-    footer { border-top: 1px solid #e5e7eb; padding: 24px 0; color: #6b7280; background: var(--white) }
-
-    /* Küçük JS için ipucu: smooth scroll */
-    html { scroll-behavior: smooth }
+    a { color: var(--brand); text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,16,32,.55); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
+    .brand { display: flex; gap:.7rem; align-items:center; font-weight: 700; }
+    .brand img { width: 28px; height: 28px; }
+    .hero { padding: 8rem 0 4rem; text-align:center; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin:.6rem 0 1rem; }
+    .lead { color: #cfe4ff; }
+    .section { padding: 3.5rem 0; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: var(--grid-gap); }
+    .card { background: var(--panel) url('assets/images/card-texture.png') center/cover no-repeat; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1.2rem; box-shadow: var(--shadow); position:relative; }
+    .card h3 { margin:.2rem 0 .4rem; font-size:1.05rem; }
+    .card .icon { font-size:1.6rem; position:absolute; top:1rem; right:1rem; opacity:.3; }
+    .muted { color: var(--muted); font-size:.95rem; }
+    .cta { text-align:center; padding: 3rem 0 4rem; }
+    .btn { display:inline-block; padding:.85rem 1.1rem; border-radius: 12px; background: linear-gradient(90deg, var(--brand), var(--accent)); color:#001018; font-weight:700; box-shadow: var(--shadow); }
+    .footer { color: var(--muted); font-size:.9rem; text-align:center; padding:2rem 0 3rem; }
+    .contact-icon { position:fixed; bottom:20px; right:20px; background:linear-gradient(90deg,var(--brand),var(--accent)); color:#001018; padding:12px; border-radius:50%; box-shadow:var(--shadow); }
+    @media (max-width: 900px){ .hero-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-  <!-- ÜST MENÜ -->
-  <header>
-    <div class="container nav">
-      <div class="logo">
-        <div class="logo-badge">OX</div>
-        <div>Dijital OpEx</div>
-      </div>
-      <nav>
-        <a href="#hakkinda">Hakkında</a>
-        <a href="#cozumler">Çözümler</a>
-        <a href="#surec">Süreç</a>
-        <a href="#iletisim">İletişim</a>
-      </nav>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img src="assets/images/logo.png" alt="Dijital OpEx Logo"/>
+        <span>Dijital OpEx</span>
+      </a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
+  <section id="top" class="hero">
     <div class="container">
-      <h1>Operasyonel Mükemmelliği <span style="color:var(--brand)">dijital</span> kurguyla hızlandırın</h1>
-      <p>ERP implementasyonundan sahadaki verimlilik iyileştirmelerine — Dijital OpEx bakışıyla maliyet düşürme, kalite ve teslimat performansında sıçrama.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#iletisim">Ücretsiz keşif görüşmesi</a>
-        <a class="btn ghost" href="#cozumler">Çözümleri incele</a>
+      <h1>Dijital OpEx bir dönüşüm yolculuğudur.</h1>
+      <p class="lead">Amaç: <strong>firmanızı görünür kılmak</strong>; veriyle konuşan süreçler, standart iş akışları, anlık panolar ve kapalı-çevrim iyileştirme ile <strong>verimlilik, kalite, kârlılık</strong>.</p>
+      <img src="assets/images/hero.jpg" alt="Dijitalleşme ve görünürlük temalı görsel" style="width:100%; max-width:600px; border-radius:14px; border:1px solid rgba(255,255,255,.08); margin-top:2rem"/>
+    </div>
+  </section>
+
+  <!-- DAYANAKLAR -->
+  <section id="dayanak" class="section">
+    <div class="container">
+      <h2>3 Ana Dayanak</h2>
+      <div class="cards">
+        <div class="card"><span class="icon">🧭</span><h3>İyileştirme Disiplini</h3><p class="muted">Süreç disiplini, kayıpların azaltılması, sürekli iyileştirme kültürü.</p></div>
+        <div class="card"><span class="icon">💾</span><h3>Dijital Dönüşüm</h3><p class="muted">Veri entegrasyonu, otomasyon, yapay zekâ destekli analizler.</p></div>
+        <div class="card"><span class="icon">🤝</span><h3>Kültür</h3><p class="muted">Çalışan katılımı, şeffaflık, ortak hedeflere uyum.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- HAKKINDA -->
-  <section id="hakkinda">
+  <!-- DÖNÜŞÜM ADIMLARI -->
+  <section id="donusum" class="section">
     <div class="container">
-      <h2 class="section-title">Hakkında</h2>
-      <p class="section-sub">Endüstri mühendisliği disiplinini saha gerçekleriyle birleştiriyor, süreçleri yalınlaştırıp dijitalleştiriyoruz.</p>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Değer Odaklı</h3>
-          <p>İlk 90 günde görülebilir kârlılık ve verimlilik etkisi yaratacak alanlara odaklanırız.</p>
-        </div>
-        <div class="card">
-          <h3>Teknoloji-Pratik Dengesi</h3>
-          <p>ERP, veri yakalama ve analitik araçları ile sahadaki akışı birlikte tasarlarız.</p>
-        </div>
-        <div class="card">
-          <h3>Sürdürülebilirlik</h3>
-          <p>Kültüre gömülü standartlar, görsel yönetim ve KPI takibi ile kalıcı sonuçlar.</p>
-        </div>
+      <h2>Dönüşüm Yolculuğu</h2>
+      <div class="cards">
+        <div class="card"><span class="icon">🗺️</span><h3>1. Haritalama</h3><p class="muted">Değer akışı, veri kaynakları, kayıplar ve fırsatlar.</p></div>
+        <div class="card"><span class="icon">📊</span><h3>2. Görünürlük</h3><p class="muted">Saha panoları, andon, kritik KPI’lar (OEE, FPY, CT).</p></div>
+        <div class="card"><span class="icon">⚙️</span><h3>3. Standart & Otomasyon</h3><p class="muted">Dijital formlar, iş akışları, otomatik uyarılar.</p></div>
+        <div class="card"><span class="icon">🌐</span><h3>4. Ölçekleme</h3><p class="muted">Model hattı → tesis geneli; ROI takibi.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ÇÖZÜMLER -->
-  <section id="cozumler">
+  <!-- METRİKLER -->
+  <section id="metrik" class="section">
     <div class="container">
-      <h2 class="section-title">Çözümler</h2>
-      <p class="section-sub">Dijital OpEx çerçevesi ile tipik müdahale alanlarımız.</p>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Akış & İsraf Azaltma</h3>
-          <p>VSM, SMED, 5S ve görsel yönetimle çevrim süresi ve WIP düşürme.</p>
-        </div>
-        <div class="card">
-          <h3>Veri Toplama & ERP</h3>
-          <p>Sahadan otomatik veri toplama, ERP entegrasyonu ve raporlama standardizasyonu.</p>
-        </div>
-        <div class="card">
-          <h3>KPI & A3 Problem Çözme</h3>
-          <p>OTIF, OEE, COPQ gibi metriklerde kök neden analizi ve sürdürülebilir iyileştirme.</p>
-        </div>
+      <h2>Metrikler (Ölçüm Sözlüğü)</h2>
+      <div class="cards">
+        <div class="card"><span class="icon">📈</span><h3>OEE (Overall Equipment Effectiveness)</h3><p class="muted">Kullanılabilirlik × Performans × Kalite. Üretim hattının genel verimliliğini gösterir.</p></div>
+        <div class="card"><span class="icon">✅</span><h3>FPY (First Pass Yield)</h3><p class="muted">İlk seferde doğru üretim oranı. Yeniden işleme ihtiyacını azaltır.</p></div>
+        <div class="card"><span class="icon">♻️</span><h3>Rework Rate (Geri Tekrar Üretim)</h3><p class="muted">Hatalı ürünlerin yeniden işlenme oranı.</p></div>
+        <div class="card"><span class="icon">🔥</span><h3>Scrap Rate (Fire)</h3><p class="muted">Tamamen kaybedilen üretim yüzdesi.</p></div>
+        <div class="card"><span class="icon">⏱️</span><h3>Cycle Time (Çevrim Süresi)</h3><p class="muted">Bir ürünün üretim başlangıcından bitimine kadar geçen süre.</p></div>
+        <div class="card"><span class="icon">🕒</span><h3>Lead Time (Teslim Süresi)</h3><p class="muted">Siparişten sevkiyata kadar geçen toplam süre.</p></div>
+        <div class="card"><span class="icon">📦</span><h3>Throughput (Çıkış Hızı)</h3><p class="muted">Birim zamanda üretilen ürün miktarı.</p></div>
+        <div class="card"><span class="icon">🔄</span><h3>WIP (Work In Process)</h3><p class="muted">Tamamlanmamış iş miktarı; akış ve darboğaz göstergesi.</p></div>
+        <div class="card"><span class="icon">⚡</span><h3>MTBF (Mean Time Between Failures)</h3><p class="muted">Arızalar arasındaki ortalama çalışma süresi.</p></div>
+        <div class="card"><span class="icon">🛠️</span><h3>MTTR (Mean Time To Repair)</h3><p class="muted">Arızadan sonra ekipmanın yeniden devreye alınma süresi.</p></div>
+        <div class="card"><span class="icon">📅</span><h3>OTD (On-Time Delivery)</h3><p class="muted">Taahhüt edilen tarihte sevk edilen sipariş yüzdesi.</p></div>
+        <div class="card"><span class="icon">🏭</span><h3>Capacity Utilization (Kapasite Kullanımı)</h3><p class="muted">Mevcut kapasitenin hangi ölçüde kullanıldığı.</p></div>
+        <div class="card"><span class="icon">🔋</span><h3>Energy per Unit (Enerji/Birim)</h3><p class="muted">Bir birim üretim için tüketilen enerji miktarı.</p></div>
+        <div class="card"><span class="icon">💰</span><h3>Cost per Unit (Birim Maliyet)</h3><p class="muted">Üretilen her birim ürünün maliyetini gösterir.</p></div>
+        <div class="card"><span class="icon">🙋</span><h3>Employee Engagement (Çalışan Katılımı)</h3><p class="muted">Çalışanların iyileştirme faaliyetlerine aktif katılım düzeyi.</p></div>
+        <div class="card"><span class="icon">🌱</span><h3>Sustainability Metrics (Sürdürülebilirlik)</h3><p class="muted">Karbon ayak izi, atık azaltımı, enerji verimliliği gibi göstergeler.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- SÜREÇ -->
-  <section id="surec">
+  <!-- CTA -->
+  <section id="iletisim" class="cta">
     <div class="container">
-      <h2 class="section-title">Nasıl Çalışıyoruz</h2>
-      <p class="section-sub">Şeffaf, hızlı ve etkisi ölçülebilir bir yol haritası.</p>
-      <div class="steps">
-        <div class="step">
-          <div></div>
-          <div>
-            <h3>1) Keşif & Hedefler</h3>
-            <p>Mevcut durum analizi, darboğazların ve israf türlerinin tespiti, 90 günlük hedefler.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div></div>
-          <div>
-            <h3>2) Pilot & Kanıt</h3>
-            <p>Seçilen hücre/hat/ürün ailesinde hızlı denemeler ve fayda doğrulaması.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div></div>
-          <div>
-            <h3>3) Yaygınlaştırma</h3>
-            <p>Standart çalışma, eğitimler ve görsel yönetim ile ölçekleme.</p>
-          </div>
-        </div>
-      </div>
+      <h2>Konuyu sahada konuşalım.</h2>
+      <p class="muted">Kısa bir keşif görüşmesi için e‑posta bırakmanız yeterli.</p>
+      <p><a class="btn" href="mailto:info@dijital-opex.example">info@dijital-opex.example</a></p>
     </div>
   </section>
 
-  <!-- İLETİŞİM -->
-  <section id="iletisim">
-    <div class="container">
-      <h2 class="section-title">İletişim</h2>
-      <p class="section-sub">Bir kahve eşliğinde 20 dakikalık çevrim içi keşif planlayalım.</p>
-      <div class="card">
-        <p><strong>E-posta:</strong> <a href="mailto:info@dijitalopex.com">info@dijitalopex.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noopener">Profil</a></p>
-      </div>
-    </div>
-  </section>
+  <a href="#iletisim" class="contact-icon">✉️</a>
 
-  <footer>
-    <div class="container">
-      <small>© <span id="yil"></span> Dijital OpEx • İstanbul</small>
-    </div>
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> Dijital OpEx • Görseller projeyle birlikte repo içinde barınır.</div>
   </footer>
-
-  <script>
-    // Yıl otomatik
-    document.getElementById('yil').textContent = new Date().getFullYear();
-  </script>
-
-  <!--
-    ✦ Bu şablonu özelleştirmek çok kolay:
-    1) Renkleri kökte değiştir: :root{ --brand: #... }
-    2) Metinleri/değer önerilerini düzenle (Hakkında/Çözümler/Süreç).
-    3) İletişim bölümündeki e-posta ve LinkedIn bağlantını güncelle.
-    4) Yeni bir bölüm eklemek için benzer SECTION bloklarını kopyala.
-  -->
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
