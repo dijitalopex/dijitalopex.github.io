@@ -1,139 +1,255 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dijital OpEx – Operasyonel Mükemmellik</title>
-  <meta name="description" content="Dijital OpEx: teknolojinin itici güç olduğu, verimlilik ve kârlılık odaklı saha dönüşüm yaklaşımı." />
-  <meta property="og:title" content="Dijital OpEx – Operasyonel Mükemmellik" />
-  <meta property="og:description" content="Teknoloji temelli operasyonel mükemmellik ve saha dönüşümü." />
-  <meta property="og:image" content="assets/images/social-card.jpg" />
-  <meta name="theme-color" content="#0b1220" />
-  <link rel="icon" href="assets/images/favicon.png" />
+  <title>Dijital OpEx</title>
+  <meta name="description" content="Verimlilik, dijitalleşme ve kültürle kârı büyüten tek sayfa deneyimi." />
+  <meta property="og:title" content="Dijital OpEx" />
+  <meta property="og:description" content="Verimlilik, dijitalleşme ve kültürle kârı büyüten tek sayfa deneyimi." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #111833;
-      --muted: #b5c0d0;
-      --text: #eaf0ff;
-      --brand: #6ae3ff;
-      --accent: #7df7c9;
-      --grid-gap: 1rem;
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color: var(--text);
-      background: url('assets/images/bg-pattern.png') repeat, radial-gradient(1200px 800px at 10% -10%, rgba(106,227,255,.18), rgba(0,0,0,0)),radial-gradient(900px 600px at 90% 10%, rgba(125,247,201,.12), rgba(0,0,0,0)),var(--bg);
-      line-height: 1.5;
-    }
-    a { color: var(--brand); text-decoration: none; }
-    .container { width: min(1100px, 92%); margin: 0 auto; }
-    .nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); background: rgba(11,16,32,.55); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
-    .brand { display: flex; gap:.7rem; align-items:center; font-weight: 700; }
-    .brand img { width: 28px; height: 28px; }
-    .hero { padding: 8rem 0 4rem; text-align:center; }
-    h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin:.6rem 0 1rem; }
-    .lead { color: #cfe4ff; }
-    .section { padding: 3.5rem 0; }
-    .cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: var(--grid-gap); }
-    .card { background: var(--panel) url('assets/images/card-texture.png') center/cover no-repeat; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1.2rem; box-shadow: var(--shadow); position:relative; }
-    .card h3 { margin:.2rem 0 .4rem; font-size:1.05rem; }
-    .card .icon { font-size:1.6rem; position:absolute; top:1rem; right:1rem; opacity:.3; }
-    .muted { color: var(--muted); font-size:.95rem; }
-    .cta { text-align:center; padding: 3rem 0 4rem; }
-    .btn { display:inline-block; padding:.85rem 1.1rem; border-radius: 12px; background: linear-gradient(90deg, var(--brand), var(--accent)); color:#001018; font-weight:700; box-shadow: var(--shadow); }
-    .footer { color: var(--muted); font-size:.9rem; text-align:center; padding:2rem 0 3rem; }
-    .contact-icon { position:fixed; bottom:20px; right:20px; background:linear-gradient(90deg,var(--brand),var(--accent)); color:#001018; padding:12px; border-radius:50%; box-shadow:var(--shadow); }
-    @media (max-width: 900px){ .hero-grid { grid-template-columns: 1fr; } }
+    :root{--bg:#0b0f1a;--ink:#ffffff;--muted:#b8c4e0;--accent:#5ab9ff;--accent2:#9a7bff;--cta:#00f0ff;--card:#0f1424;--ring:#2b3355;}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to bottom, rgba(11,15,26,.9), rgba(11,15,26,.3), transparent);backdrop-filter:saturate(140%) blur(4px)}
+    .nav{display:flex;align-items:center;justify-content:flex-end;padding:16px 0}
+    .ghost-btn{border:1px solid var(--ring);padding:10px 14px;border-radius:14px;color:var(--ink);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.0));}
+    .ghost-btn:hover{border-color:var(--accent);box-shadow:0 0 0 4px rgba(90,185,255,.12)}
+
+    /* HERO */
+    .hero{position:relative;min-height:100svh;display:grid;place-items:center;padding-top:90px;text-align:center;overflow:hidden}
+    #netbg{position:absolute;inset:0;z-index:0}
+    .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 500px at 70% 10%, rgba(0,240,255,.07), transparent 60%),radial-gradient(700px 400px at 20% 70%, rgba(154,123,255,.08), transparent 60%);z-index:0}
+    .title{position:relative;z-index:1;font-family:Poppins,Manrope,sans-serif;font-size:clamp(40px,8vw,86px);line-height:1.1;font-weight:700;letter-spacing:-1px;color:#ffffff;text-shadow:0 0 8px rgba(0,0,0,.7);margin-bottom:28px}
+    .subtitle{position:relative;z-index:1;font-weight:700;font-size:28px;margin:0 0 14px 0;color:#ffffff;text-shadow:0 0 12px rgba(0,0,0,.85)}
+    .lean-line{position:relative;z-index:1;font-size:20px;font-weight:600;color:#d0d6eb;text-shadow:0 0 8px rgba(0,0,0,.7);background:rgba(15,20,36,0.6);padding:8px 18px;border-radius:10px;display:inline-block}
+
+    /* PILLARS */
+    .flow{position:relative;padding:100px 0 60px}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--ring);border-radius:20px;padding:22px;min-height:200px}
+    .card h3{margin:0 0 10px;font-size:22px;text-align:center}
+    .card ul{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.6;text-align:left}
+
+    footer{padding:60px 0 100px;color:var(--muted);text-align:center}
+    .tiny{font-size:12px;opacity:.8}
+
+    /* MODAL */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,10,20,.6);backdrop-filter:blur(6px);z-index:60}
+    .modal.open{display:flex}
+    .sheet{width:min(480px,92vw);background:var(--card);border:1px solid var(--ring);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden}
+    .sheet header{padding:16px;border-bottom:1px solid var(--ring)}
+    .sheet h4{margin:0}
+    .sheet .content{padding:20px}
+    .close{position:absolute;right:12px;top:10px;border:none;background:transparent;color:#cde7ff;font-size:22px;cursor:pointer}
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <img src="assets/images/logo1.png" alt="Dijital OpEx Logo"/>
-        <span>Dijital OpEx</span>
-      </a>
+  <!-- HERO with network background -->
+  <section class="hero">
+    <canvas id="netbg" aria-hidden="true"></canvas>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="container">
+      <h1 class="title">Dijital OpEx</h1>
+      <div class="subtitle">Firmanızı görünür kılıyoruz.</div>
+      <div class="lean-line">Lean • Digital • Culture</div>
+    </div>
+  </section>
+
+  <header>
+    <div class="container nav">
+      <a class="ghost-btn" href="#" id="openForm">İletişime Geç</a>
     </div>
   </header>
 
-  <section id="top" class="hero">
-    <div class="container">
-      <h1>Dijital OpEx bir dönüşüm yolculuğudur.</h1>
-      <p class="lead">Amaç: <strong>firmanızı görünür kılmak</strong>; veriyle konuşan süreçler, standart iş akışları, anlık panolar ve kapalı-çevrim iyileştirme ile <strong>verimlilik, kalite, kârlılık</strong>.</p>
-      <img src="assets/images/hero.jpg" alt="Dijitalleşme ve görünürlük temalı görsel" style="width:100%; max-width:600px; border-radius:14px; border:1px solid rgba(255,255,255,.08); margin-top:2rem"/>
-    </div>
-  </section>
-
-  <!-- DAYANAKLAR -->
-  <section id="dayanak" class="section">
-    <div class="container">
-      <h2>3 Ana Dayanak</h2>
-      <div class="cards">
-        <div class="card"><span class="icon">🧭</span><h3>İyileştirme Disiplini</h3><p class="muted">Süreç disiplini, kayıpların azaltılması, sürekli iyileştirme kültürü.</p></div>
-        <div class="card"><span class="icon">💾</span><h3>Dijital Dönüşüm</h3><p class="muted">Veri entegrasyonu, otomasyon, yapay zekâ destekli analizler.</p></div>
-        <div class="card"><span class="icon">🤝</span><h3>Kültür</h3><p class="muted">Çalışan katılımı, şeffaflık, ortak hedeflere uyum.</p></div>
+  <main>
+    <section class="container flow" id="flow">
+      <div class="pillars">
+        <article class="card">
+          <h3>Operasyonel Mükemmellik</h3>
+          <ul>
+            <li>Akışı yalınlaştırma</li>
+            <li>İsrafı görünür kılma</li>
+            <li>Hatayı tasarımla engelleme</li>
+            <li>Saha gerçekliğine uyum</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Dijital & Otomasyon</h3>
+          <ul>
+            <li>Sensör verisi kullanımı</li>
+            <li>ERP entegrasyonları</li>
+            <li>Gerçek zamanlı panolar</li>
+            <li>Hızlı karar döngüleri</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Kültür</h3>
+          <ul>
+            <li>Standart işlerin yerleşmesi</li>
+            <li>Problem çözme ritüeli</li>
+            <li>Sahada öğrenen ekipler</li>
+            <li>Sürdürülebilir değişim</li>
+          </ul>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- DÖNÜŞÜM ADIMLARI -->
-  <section id="donusum" class="section">
-    <div class="container">
-      <h2>Dönüşüm Yolculuğu</h2>
-      <div class="cards">
-        <div class="card"><span class="icon">🗺️</span><h3>1. Haritalama</h3><p class="muted">Değer akışı, veri kaynakları, kayıplar ve fırsatlar.</p></div>
-        <div class="card"><span class="icon">📊</span><h3>2. Görünürlük</h3><p class="muted">Saha panoları, andon, kritik KPI’lar (OEE, FPY, CT).</p></div>
-        <div class="card"><span class="icon">⚙️</span><h3>3. Standart & Otomasyon</h3><p class="muted">Dijital formlar, iş akışları, otomatik uyarılar.</p></div>
-        <div class="card"><span class="icon">🌐</span><h3>4. Ölçekleme</h3><p class="muted">Model hattı → tesis geneli; ROI takibi.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- METRİKLER -->
-  <section id="metrik" class="section">
-    <div class="container">
-      <h2>Metrikler (Ölçüm Sözlüğü)</h2>
-      <div class="cards">
-        <div class="card"><span class="icon">📈</span><h3>OEE (Overall Equipment Effectiveness)</h3><p class="muted">Kullanılabilirlik × Performans × Kalite. Üretim hattının genel verimliliğini gösterir.</p></div>
-        <div class="card"><span class="icon">✅</span><h3>FPY (First Pass Yield)</h3><p class="muted">İlk seferde doğru üretim oranı. Yeniden işleme ihtiyacını azaltır.</p></div>
-        <div class="card"><span class="icon">♻️</span><h3>Rework Rate (Geri Tekrar Üretim)</h3><p class="muted">Hatalı ürünlerin yeniden işlenme oranı.</p></div>
-        <div class="card"><span class="icon">🔥</span><h3>Scrap Rate (Fire)</h3><p class="muted">Tamamen kaybedilen üretim yüzdesi.</p></div>
-        <div class="card"><span class="icon">⏱️</span><h3>Cycle Time (Çevrim Süresi)</h3><p class="muted">Bir ürünün üretim başlangıcından bitimine kadar geçen süre.</p></div>
-        <div class="card"><span class="icon">🕒</span><h3>Lead Time (Teslim Süresi)</h3><p class="muted">Siparişten sevkiyata kadar geçen toplam süre.</p></div>
-        <div class="card"><span class="icon">📦</span><h3>Throughput (Çıkış Hızı)</h3><p class="muted">Birim zamanda üretilen ürün miktarı.</p></div>
-        <div class="card"><span class="icon">🔄</span><h3>WIP (Work In Process)</h3><p class="muted">Tamamlanmamış iş miktarı; akış ve darboğaz göstergesi.</p></div>
-        <div class="card"><span class="icon">⚡</span><h3>MTBF (Mean Time Between Failures)</h3><p class="muted">Arızalar arasındaki ortalama çalışma süresi.</p></div>
-        <div class="card"><span class="icon">🛠️</span><h3>MTTR (Mean Time To Repair)</h3><p class="muted">Arızadan sonra ekipmanın yeniden devreye alınma süresi.</p></div>
-        <div class="card"><span class="icon">📅</span><h3>OTD (On-Time Delivery)</h3><p class="muted">Taahhüt edilen tarihte sevk edilen sipariş yüzdesi.</p></div>
-        <div class="card"><span class="icon">🏭</span><h3>Capacity Utilization (Kapasite Kullanımı)</h3><p class="muted">Mevcut kapasitenin hangi ölçüde kullanıldığı.</p></div>
-        <div class="card"><span class="icon">🔋</span><h3>Energy per Unit (Enerji/Birim)</h3><p class="muted">Bir birim üretim için tüketilen enerji miktarı.</p></div>
-        <div class="card"><span class="icon">💰</span><h3>Cost per Unit (Birim Maliyet)</h3><p class="muted">Üretilen her birim ürünün maliyetini gösterir.</p></div>
-        <div class="card"><span class="icon">🙋</span><h3>Employee Engagement (Çalışan Katılımı)</h3><p class="muted">Çalışanların iyileştirme faaliyetlerine aktif katılım düzeyi.</p></div>
-        <div class="card"><span class="icon">🌱</span><h3>Sustainability Metrics (Sürdürülebilirlik)</h3><p class="muted">Karbon ayak izi, atık azaltımı, enerji verimliliği gibi göstergeler.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="iletisim" class="cta">
-    <div class="container">
-      <h2>Konuyu sahada konuşalım.</h2>
-      <p class="muted">Kısa bir keşif görüşmesi için e‑posta bırakmanız yeterli.</p>
-      <p><a class="btn" href="mailto:info@dijital-opex.example">info@dijital-opex.example</a></p>
-    </div>
-  </section>
-
-  <a href="#iletisim" class="contact-icon">✉️</a>
-
-  <footer class="footer">
-    <div class="container">© <span id="y"></span> Dijital OpEx • Görseller projeyle birlikte repo içinde barınır.</div>
+  <footer class="container">
+    <p><strong>Verimlilik artışı</strong> bizim işimiz. Cevapları sunmayız; <a href="#" id="openFormFooter">birlikte keşfederiz</a>.</p>
+    <p class="tiny">© <span id="year"></span> Dijital OpEx • GitHub Pages</p>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+  <!-- Modal with Google Form (tek alan) -->
+  <div class="modal" id="modal">
+    <div class="sheet">
+      <header>
+        <h4>İletişim Formu</h4>
+        <button class="close" id="closeModal">✕</button>
+      </header>
+      <div class="content">
+        <p>Lütfen e-posta adresinizi bırakın, size geri dönüş yapalım:</p>
+        <iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true" width="100%" height="220" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+
+    // Modal open/close (varsa)
+    const modal = document.getElementById('modal');
+    const openTop = document.getElementById('openForm');
+    const openFoot = document.getElementById('openFormFooter');
+    const closeBtn = document.getElementById('closeModal');
+    if(openTop) openTop.addEventListener('click', (e)=>{e.preventDefault(); modal.classList.add('open')});
+    if(openFoot) openFoot.addEventListener('click', (e)=>{e.preventDefault(); modal.classList.add('open')});
+    if(closeBtn) closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+    if(modal) modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open') });
+
+    // === Işık Parçacıkları + Bağlantılar (optimizasyonlu) ===
+    const canvas = document.getElementById('netbg');
+    const ctx = canvas.getContext('2d');
+
+    // Konfigürasyon — yoğunluk & bağ mesafesi (istediğinde kolayca oynayabilirsin)
+    let LINK_MAX = 260;              // bağlanma yarıçapı (px)
+    let DENSITY_FACTOR = 2600;       // ekran alanına oranla parça sayısı = area / DENSITY_FACTOR
+    let MAX_PARTICLES = 700;         // tavan parça sayısı
+
+    let lights = [];
+
+    function resize(){
+      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+      const area = canvas.width * canvas.height;
+      const count = Math.min(MAX_PARTICLES, Math.floor(area / DENSITY_FACTOR));
+      lights = Array.from({length: count}, ()=>({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2 + 1,
+        dx: (Math.random()-0.5)*2.2,
+        dy: (Math.random()-0.5)*2.2
+      }));
+    }
+
+    // Basit grid (spatial hashing) — en yakın komşuyu hızlı bulmak için
+    let grid = new Map();
+    let cellSize = 0; // LINK_MAX'e göre set edilecek
+
+    function gridKey(cx, cy){ return cx + ',' + cy; }
+
+    function buildGrid(){
+      grid.clear();
+      cellSize = Math.max(40, Math.floor(LINK_MAX));
+      for(let i=0; i<lights.length; i++){
+        const p = lights[i];
+        const cx = Math.floor(p.x / cellSize);
+        const cy = Math.floor(p.y / cellSize);
+        const key = gridKey(cx, cy);
+        if(!grid.has(key)) grid.set(key, []);
+        grid.get(key).push(i);
+      }
+    }
+
+    function nearestIndexFor(i){
+      const a = lights[i];
+      const cx = Math.floor(a.x / cellSize);
+      const cy = Math.floor(a.y / cellSize);
+      let bestIdx = -1, bestD2 = Infinity;
+      // Kendi hücresi ve çevresindeki 8 hücreyi tara
+      for(let gx = cx-1; gx <= cx+1; gx++){
+        for(let gy = cy-1; gy <= cy+1; gy++){
+          const key = gridKey(gx, gy);
+          const bucket = grid.get(key);
+          if(!bucket) continue;
+          for(let k=0; k<bucket.length; k++){
+            const j = bucket[k];
+            if(j === i) continue;
+            const b = lights[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d2 = dx*dx + dy*dy;
+            if(d2 < bestD2){ bestD2 = d2; bestIdx = j; }
+          }
+        }
+      }
+      return { idx: bestIdx, d2: bestD2 };
+    }
+
+    function draw(){
+      ctx.fillStyle = 'rgba(11,15,26,0.35)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // noktaları hareket ettir ve çiz
+      for(let i=0;i<lights.length;i++){
+        const l = lights[i];
+        l.x += l.dx; l.y += l.dy;
+        if(l.x < 0 || l.x > canvas.width) l.dx *= -1;
+        if(l.y < 0 || l.y > canvas.height) l.dy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(l.x, l.y, l.r, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(200,230,255,0.9)';
+        ctx.fill();
+      }
+
+      // Grid oluştur (komşu araması için)
+      buildGrid();
+
+      // en yakına bağla ve uzaksa kopar — mor/turkuaz degrade çizgi
+      for(let i=0;i<lights.length;i++){
+        const a = lights[i];
+        const { idx, d2 } = nearestIndexFor(i);
+        if(idx !== -1){
+          const b = lights[idx];
+          const d = Math.sqrt(d2);
+          if(d < LINK_MAX){
+            const alpha = 0.28 * (1 - d / LINK_MAX);
+            // Her çizgi için iki nokta arasında degrade
+            const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+            grad.addColorStop(0, `rgba(154,123,255,${alpha})`); // mor
+            grad.addColorStop(1, `rgba(0,240,255,${alpha})`);   // turkuaz
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 0.9;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  </script>
 </body>
 </html>
