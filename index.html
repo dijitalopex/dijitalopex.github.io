@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0f1a;--ink:#ffffff;--muted:#b8c4e0;--accent:#5ab9ff;--accent2:#9a7bff;--cta:#00f0ff;--card:#0f1424;--ring:#2b3355;}
+    :root{--bg:#0b0f1a;--ink:#ffffff;--muted:#b8c4e0;--accent:#5ab9ff;--accent2:#9a7bff;--cta:#00f0ff;--card:#0f1424;--ring:#2b3355;--gap:18px}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
@@ -21,7 +21,7 @@
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to bottom, rgba(11,15,26,.9), rgba(11,15,26,.3), transparent);backdrop-filter:saturate(140%) blur(4px)}
-    .nav{display:flex;align-items:center;justify-content:flex-end;padding:16px 0}
+    .nav{display:flex;align-items:center;justify-content:flex-end;padding:12px 0}
     .ghost-btn{border:1px solid var(--ring);padding:10px 14px;border-radius:14px;color:var(--ink);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.0));}
     .ghost-btn:hover{border-color:var(--accent);box-shadow:0 0 0 4px rgba(90,185,255,.12)}
 
@@ -29,15 +29,15 @@
     .hero{position:relative;min-height:100svh;display:grid;place-items:center;padding-top:90px;text-align:center;overflow:hidden}
     #netbg{position:absolute;inset:0;z-index:0}
     .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(900px 500px at 70% 10%, rgba(0,240,255,.07), transparent 60%),radial-gradient(700px 400px at 20% 70%, rgba(154,123,255,.08), transparent 60%);z-index:0}
-    .title{position:relative;z-index:1;font-family:Poppins,Manrope,sans-serif;font-size:clamp(40px,8vw,86px);line-height:1.1;font-weight:700;letter-spacing:-1px;color:#ffffff;text-shadow:0 0 8px rgba(0,0,0,.7);margin-bottom:28px}
-    .subtitle{position:relative;z-index:1;font-weight:700;font-size:28px;margin:0 0 14px 0;color:#ffffff;text-shadow:0 0 12px rgba(0,0,0,.85)}
-    .lean-line{position:relative;z-index:1;font-size:20px;font-weight:600;color:#d0d6eb;text-shadow:0 0 8px rgba(0,0,0,.7);background:rgba(15,20,36,0.6);padding:8px 18px;border-radius:10px;display:inline-block}
+    .title{position:relative;z-index:1;font-family:Poppins,Manrope,sans-serif;font-size:clamp(34px,7.2vw,86px);line-height:1.1;font-weight:700;letter-spacing:-1px;color:#ffffff;text-shadow:0 0 8px rgba(0,0,0,.7);margin-bottom:24px}
+    .subtitle{position:relative;z-index:1;font-weight:700;font-size:clamp(18px,3.2vw,28px);margin:0 0 12px 0;color:#ffffff;text-shadow:0 0 12px rgba(0,0,0,.85)}
+    .lean-line{position:relative;z-index:1;font-size:clamp(14px,2.8vw,20px);font-weight:600;color:#d0d6eb;text-shadow:0 0 8px rgba(0,0,0,.7);background:rgba(15,20,36,0.6);padding:8px 14px;border-radius:10px;display:inline-block}
 
     /* PILLARS */
-    .flow{position:relative;padding:100px 0 60px}
-    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .flow{position:relative;padding:80px 0 60px}
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
     .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--ring);border-radius:20px;padding:22px;min-height:200px}
-    .card h3{margin:0 0 10px;font-size:22px;text-align:center}
+    .card h3{margin:0 0 10px;font-size:20px;text-align:center}
     .card ul{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.6;text-align:left}
 
     footer{padding:60px 0 100px;color:var(--muted);text-align:center}
@@ -46,11 +46,44 @@
     /* MODAL */
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,10,20,.6);backdrop-filter:blur(6px);z-index:60}
     .modal.open{display:flex}
-    .sheet{width:min(480px,92vw);background:var(--card);border:1px solid var(--ring);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden}
+    .sheet{width:min(720px,92vw);background:var(--card);border:1px solid var(--ring);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden}
     .sheet header{padding:16px;border-bottom:1px solid var(--ring)}
     .sheet h4{margin:0}
     .sheet .content{padding:20px}
     .close{position:absolute;right:12px;top:10px;border:none;background:transparent;color:#cde7ff;font-size:22px;cursor:pointer}
+
+    /* ============================ */
+    /* Responsive İyileştirmeleri   */
+    /* ============================ */
+
+    /* Büyük tablet / küçük laptop */
+    @media (max-width: 1024px){
+      .pillars{grid-template-columns:repeat(2,1fr)}
+      .flow{padding-top:70px}
+    }
+
+    /* Tablet ve altı */
+    @media (max-width: 768px){
+      .nav{justify-content:center}
+      .hero{padding-top:80px}
+      .pillars{grid-template-columns:1fr}
+      .card{padding:18px}
+      .card h3{font-size:18px}
+      .card ul{font-size:14px}
+      :root{--gap:14px}
+      .sheet{width:95vw}
+    }
+
+    /* Güvenli alan iyileştirmesi (çok küçük cihazlar) */
+    @media (max-width: 380px){
+      .lean-line{padding:6px 10px;border-radius:8px}
+    }
+
+    /* Yüksek hareket hassasiyeti olan kullanıcılar için animasyonu azalt */
+    @media (prefers-reduced-motion: reduce){
+      #netbg{display:none}
+      .glow{display:none}
+    }
   </style>
 </head>
 <body>
@@ -84,7 +117,7 @@
           </ul>
         </article>
         <article class="card">
-          <h3>Dijital & Otomasyon</h3>
+          <h3>Dijital &amp; Otomasyon</h3>
           <ul>
             <li>Sensör verisi kullanımı</li>
             <li>ERP entegrasyonları</li>
@@ -110,24 +143,24 @@
     <p class="tiny">© <span id="year"></span> Dijital OpEx </p>
   </footer>
 
-  <!-- Modal with Google Form (tek alan) -->
-  <div class="modal" id="modal">
+  <!-- Modal with Google Form -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="sheet">
       <header>
-        <h4>İletişim Formu</h4>
-        <button class="close" id="closeModal">✕</button>
+        <h4 id="modalTitle">İletişim Formu</h4>
+        <button class="close" id="closeModal" aria-label="Kapat">✕</button>
       </header>
       <div class="content">
-        <p>Lütfen e-posta adresinizi bırakın, size geri dönüş yapalım:</p>
-        <iframe src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true" width="100%" height="220" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiuWG6nP1x6xUd27-95Om3rHvWhTijK7u0j-OO86Tcui6UXw/viewform?embedded=true" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+    const yearEl = document.getElementById('year');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Modal open/close (varsa)
+    // Modal open/close
     const modal = document.getElementById('modal');
     const openTop = document.getElementById('openForm');
     const openFoot = document.getElementById('openFormFooter');
@@ -141,33 +174,43 @@
     const canvas = document.getElementById('netbg');
     const ctx = canvas.getContext('2d');
 
-    // Konfigürasyon — yoğunluk & bağ mesafesi (istediğinde kolayca oynayabilirsin)
-    let LINK_MAX = 260;              // bağlanma yarıçapı (px)
-    let DENSITY_FACTOR = 2600;       // ekran alanına oranla parça sayısı = area / DENSITY_FACTOR
-    let MAX_PARTICLES = 700;         // tavan parça sayısı
+    let LINK_MAX = 220;
+    let DENSITY_FACTOR = 2800;
+    let MAX_PARTICLES = 650;
+
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if(isMobile){
+      LINK_MAX = 180;
+      DENSITY_FACTOR = 3600;
+      MAX_PARTICLES = 480;
+    }
 
     let lights = [];
 
     function resize(){
-      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-      const area = canvas.width * canvas.height;
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      const w = window.innerWidth, h = window.innerHeight;
+      canvas.width = Math.floor(w * dpr); canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const area = w * h;
       const count = Math.min(MAX_PARTICLES, Math.floor(area / DENSITY_FACTOR));
       lights = Array.from({length: count}, ()=>({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
+        x: Math.random()*w,
+        y: Math.random()*h,
         r: Math.random()*2 + 1,
-        dx: (Math.random()-0.5)*2.2,
-        dy: (Math.random()-0.5)*2.2
+        dx: (Math.random()-0.5)*2.0,
+        dy: (Math.random()-0.5)*2.0
       }));
     }
 
-    // Basit grid (spatial hashing) — en yakın komşuyu hızlı bulmak için
     let grid = new Map();
-    let cellSize = 0; // LINK_MAX'e göre set edilecek
+    let cellSize = 0;
 
     function gridKey(cx, cy){ return cx + ',' + cy; }
 
-    function buildGrid(){
+    function buildGrid(w, h){
       grid.clear();
       cellSize = Math.max(40, Math.floor(LINK_MAX));
       for(let i=0; i<lights.length; i++){
@@ -185,7 +228,6 @@
       const cx = Math.floor(a.x / cellSize);
       const cy = Math.floor(a.y / cellSize);
       let bestIdx = -1, bestD2 = Infinity;
-      // Kendi hücresi ve çevresindeki 8 hücreyi tara
       for(let gx = cx-1; gx <= cx+1; gx++){
         for(let gy = cy-1; gy <= cy+1; gy++){
           const key = gridKey(gx, gy);
@@ -204,16 +246,17 @@
       return { idx: bestIdx, d2: bestD2 };
     }
 
+    let rafId;
     function draw(){
+      const w = canvas.clientWidth; const h = canvas.clientHeight;
       ctx.fillStyle = 'rgba(11,15,26,0.35)';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillRect(0,0,w,h);
 
-      // noktaları hareket ettir ve çiz
       for(let i=0;i<lights.length;i++){
         const l = lights[i];
         l.x += l.dx; l.y += l.dy;
-        if(l.x < 0 || l.x > canvas.width) l.dx *= -1;
-        if(l.y < 0 || l.y > canvas.height) l.dy *= -1;
+        if(l.x < 0 || l.x > w) l.dx *= -1;
+        if(l.y < 0 || l.y > h) l.dy *= -1;
 
         ctx.beginPath();
         ctx.arc(l.x, l.y, l.r, 0, Math.PI*2);
@@ -221,10 +264,8 @@
         ctx.fill();
       }
 
-      // Grid oluştur (komşu araması için)
-      buildGrid();
+      buildGrid(w, h);
 
-      // en yakına bağla ve uzaksa kopar — mor/turkuaz degrade çizgi
       for(let i=0;i<lights.length;i++){
         const a = lights[i];
         const { idx, d2 } = nearestIndexFor(i);
@@ -233,10 +274,9 @@
           const d = Math.sqrt(d2);
           if(d < LINK_MAX){
             const alpha = 0.28 * (1 - d / LINK_MAX);
-            // Her çizgi için iki nokta arasında degrade
             const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
-            grad.addColorStop(0, `rgba(154,123,255,${alpha})`); // mor
-            grad.addColorStop(1, `rgba(0,240,255,${alpha})`);   // turkuaz
+            grad.addColorStop(0, `rgba(154,123,255,${alpha})`);
+            grad.addColorStop(1, `rgba(0,240,255,${alpha})`);
             ctx.strokeStyle = grad;
             ctx.lineWidth = 0.9;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
@@ -244,12 +284,13 @@
         }
       }
 
-      requestAnimationFrame(draw);
+      rafId = requestAnimationFrame(draw);
     }
 
-    window.addEventListener('resize', resize);
-    resize();
-    draw();
-  </script>
-</body>
-</html>
+    function start(){
+      cancelAnimationFrame(rafId);
+      resize();
+      draw();
+    }
+
+    window.addEventListener('resize', start, {passive:true});
