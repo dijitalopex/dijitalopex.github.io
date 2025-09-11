@@ -9,6 +9,55 @@
   <meta property="og:description" content="Verimlilik, dijitalleşme ve kültürle kârı büyüten tek sayfa deneyimi." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0b0f1a">
+  
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://www.dijitalopex.com/">
+  <link rel="alternate" href="https://www.dijitalopex.com/" hreflang="tr-TR">
+  <link rel="alternate" href="https://www.dijitalopex.com/" hreflang="x-default">
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta http-equiv="Content-Language" content="tr-TR" />
+  <meta name="author" content="Dijital OpEx" />
+  <meta name="publisher" content="Dijital OpEx" />
+
+  <!-- Open Graph -->
+  <meta property="og:url" content="https://www.dijitalopex.com/" />
+  <meta property="og:site_name" content="Dijital OpEx" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:image" content="https://www.dijitalopex.com/assets/images/og-image.jpg" />
+  <meta property="og:image:alt" content="Dijital OpEx: Lean • Digital • Culture" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dijital OpEx" />
+  <meta name="twitter:description" content="Verimlilik, dijitalleşme ve kültürle kârı büyüten tek sayfa deneyimi." />
+  <meta name="twitter:image" content="https://www.dijitalopex.com/assets/images/og-image.jpg" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Dijital OpEx",
+    "url": "https://www.dijitalopex.com/",
+    "logo": "https://www.dijitalopex.com/assets/images/logo.png",
+    "description": "Operasyonel mükemmellik, dijitalleşme ve kültürle kârı büyütüyoruz. ERP entegrasyonları, gerçek zamanlı panolar ve yalın dönüşüm.",
+    "areaServed": {"@type": "Country", "name": "Türkiye"},
+    "knowsAbout": ["Operasyonel Mükemmellik", "Yalın Dönüşüm", "ERP Uygulama", "Dijital Dönüşüm", "Kaizen", "Süreç İyileştirme"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Dijital OpEx",
+    "url": "https://www.dijitalopex.com/"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
@@ -21,7 +70,11 @@
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     header{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to bottom, rgba(11,15,26,.9), rgba(11,15,26,.3), transparent);backdrop-filter:saturate(140%) blur(4px)}
-    .nav{display:flex;align-items:center;justify-content:flex-end;padding:12px 0}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
+    .brand{display:flex;align-items:center;min-width:0}
+    .brand img{display:block;height:40px;width:auto;max-width:298px;image-rendering:auto}
+    @media (max-width:768px){.brand img{height:34px}}
+    
     .ghost-btn{border:1px solid var(--ring);padding:10px 14px;border-radius:14px;color:var(--ink);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.0));}
     .ghost-btn:hover{border-color:var(--accent);box-shadow:0 0 0 4px rgba(90,185,255,.12)}
 
@@ -39,6 +92,7 @@
     .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid var(--ring);border-radius:20px;padding:22px;min-height:200px}
     .card h3{margin:0 0 10px;font-size:20px;text-align:center}
     .card ul{margin:0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.6;text-align:left}
+    .card p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
 
     footer{padding:60px 0 100px;color:var(--muted);text-align:center}
     .tiny{font-size:12px;opacity:.8}
@@ -100,43 +154,97 @@
 
   <header>
     <div class="container nav">
+      <a class="brand" href="#" aria-label="Dijital OpEx Ana Sayfa">
+        <img src="assets/images/logo.png" width="298" height="107" alt="Dijital OpEx logo">
+      </a>
       <a class="ghost-btn" href="#" id="openForm">İletişime Geç</a>
     </div>
   </header>
 
   <main>
+    <section class="container intro" id="intro" style="padding:40px 0 0;">
+      <h2 style="margin:0 0 12px;font-size:26px;letter-spacing:-.2px;text-align:center">Operasyonel Mükemmellik ve Dijital Dönüşüm</h2>
+      <p style="margin:0 auto 22px;max-width:900px;color:#c9d4ef;font-size:16px;line-height:1.75;text-align:center">
+        Dijital OpEx; <strong>operasyonel mükemmellik</strong>, <strong>yalın yönetim</strong> ve <strong>dijitalleşmeyi</strong> aynı çatı altında birleştirir. ERP entegrasyonları, sensör verisi ve gerçek zamanlı panolarla akışı görünür kılar; sahada <em>israfı</em> azaltır, <em>kaliteyi</em> artırır ve karar döngülerini hızlandırır. Tekstil (örgü, kumaş üretimi), boyahane ve baskı gibi üretim hatlarında, veri temelli problem çözme ve standart iş ile sürdürülebilir performans sağlarız.
+      </p>
+    </section>
     <section class="container flow" id="flow">
       <div class="pillars">
         <article class="card">
           <h3>Operasyonel Mükemmellik</h3>
           <ul>
-            <li>Akışı yalınlaştırma</li>
-            <li>İsrafı görünür kılma</li>
+            <li>Süreç iyileştirme</li>
+            <li>İsrafı ortadan kaldırma</li>
             <li>Hatayı tasarımla engelleme</li>
             <li>Saha gerçekliğine uyum</li>
           </ul>
+          <p>Değer akışını uçtan uca analiz eder, darboğaz, bekleme ve tekrar işleri kaldırır; kaliteyi yerinde üretir, çevrim süresini düşürür.</p>
+        
         </article>
         <article class="card">
           <h3>Dijital &amp; Otomasyon</h3>
           <ul>
-            <li>Sensör verisi kullanımı</li>
+            <li>Dijital dönüşüm</li>
             <li>ERP entegrasyonları</li>
             <li>Gerçek zamanlı panolar</li>
             <li>Hızlı karar döngüleri</li>
           </ul>
+          <p>Saha verisini ERP/IoT ile birleştirir; gerçek zamanlı panolar ve otomatik uyarılarla karar döngülerini hızlandırır.</p>
+        
         </article>
         <article class="card">
           <h3>Kültür</h3>
           <ul>
-            <li>Standart işlerin yerleşmesi</li>
-            <li>Problem çözme ritüeli</li>
+            <li>Operasyonların standartlaştırılması</li>
+            <li>Problem çözme kültürü</li>
             <li>Sahada öğrenen ekipler</li>
             <li>Sürdürülebilir değişim</li>
           </ul>
+          <p>Problem çözme kültürünü yaygınlaştırır, standart işi güvenceye alır; sürekli iyileştirme ritmiyle performansı kalıcı kılar.</p>
+        
         </article>
       </div>
     </section>
+      <section class="container faq" id="faq" style="padding:10px 0 40px">
+      <h2 style="margin:0 0 12px;font-size:24px;text-align:center">Sık Sorulan Sorular</h2>
+      <div style="max-width:900px;margin:0 auto;color:#c9d4ef;font-size:16px;line-height:1.7">
+        <p><strong>Dijital OpEx tam olarak nedir?</strong><br> Operasyonel mükemmellik (Lean), dijital altyapı (ERP, sensör, pano) ve kurum kültürünü birlikte ele alan bir yaklaşım.</p>
+        <p><strong>Hangi sektörlerle çalışıyorsunuz?</strong><br> Üretim odaklı işletmeler; özellikle tekstil (örgü, kumaş), boyahane/baskı ve süreç endüstrileri.</p>
+        <p><strong>ERP ile nasıl ilerliyorsunuz?</strong><br> Mevcut ERP’nizi terk etmeden, süreç verilerinizi görünür kılacak entegrasyonlar ve KPI panoları tasarlarız.</p>
+        <p><strong>Ne zaman fayda görürüm?</strong><br> İlk 6–12 haftada görünürlük ve karar hızında artış; 3–6 ay aralığında verimlilik ve kalite göstergelerinde iyileşme.</p>
+      </div>
+    </section>
   </main>
+
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Dijital OpEx tam olarak nedir?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Operasyonel mükemmellik (Lean), dijital altyapı (ERP, sensör, pano) ve kurum kültürünü birlikte ele alan bir yaklaşım."}
+      },
+      {
+        "@type": "Question",
+        "name": "Hangi sektörlerle çalışıyorsunuz?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Üretim odaklı işletmeler; özellikle tekstil (örgü, kumaş), boyahane/baskı ve süreç endüstrileri."}
+      },
+      {
+        "@type": "Question",
+        "name": "ERP ile nasıl ilerliyorsunuz?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Mevcut ERP’nizi terk etmeden, süreç verilerinizi görünür kılacak entegrasyonlar ve KPI panoları tasarlarız."}
+      },
+      {
+        "@type": "Question",
+        "name": "Ne zaman fayda görürüm?",
+        "acceptedAnswer": {"@type": "Answer", "text": "İlk 6–12 haftada görünürlük ve karar hızında artış; 3–6 ay aralığında verimlilik ve kalite göstergelerinde iyileşme."}
+      }
+    ]
+  }
+  </script>
 
   <footer class="container">
     <p><strong>Verimlilik artışı</strong> bizim işimiz. Cevapları sunmayız; <a href="#" id="openFormFooter">birlikte keşfederiz</a>.</p>
@@ -151,7 +259,7 @@
         <button class="close" id="closeModal" aria-label="Kapat">✕</button>
       </header>
       <div class="content">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiuWG6nP1x6xUd27-95Om3rHvWhTijK7u0j-OO86Tcui6UXw/viewform?embedded=true" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+        <iframe loading="lazy" src="https://docs.google.com/forms/d/e/1FAIpQLSeiuWG6nP1x6xUd27-95Om3rHvWhTijK7u0j-OO86Tcui6UXw/viewform?embedded=true" width="100%" height="720" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
       </div>
     </div>
   </div>
@@ -294,3 +402,7 @@
     }
 
     window.addEventListener('resize', start, {passive:true});
+    start();
+  </script>
+</body>
+</html>
