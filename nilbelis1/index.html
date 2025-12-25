@@ -38,10 +38,11 @@
     }
 
     .app{
-      width:min(1100px, 100%);
+      width:min(1120px, 100%);
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap:18px;
+      align-items:start;
     }
 
     @media (max-width: 960px){
@@ -67,275 +68,133 @@
       background: linear-gradient(90deg, rgba(255,77,166,.18), rgba(59,130,246,.12));
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
+    .brand{display:flex; align-items:center; gap:12px;}
     .brand .logo{
-      width:42px;height:42px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.07);
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+      background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow: 0 8px 18px rgba(0,0,0,.06);
     }
-
     .brand h1{margin:0;font-size:20px;line-height:1.1}
     .brand p{margin:0;color:var(--muted);font-size:13px}
 
     .header .actions{display:flex; gap:10px; flex-wrap:wrap}
 
     .btn{
-      appearance:none;
-      border:0;
-      padding:10px 12px;
-      border-radius:16px;
-      background:#fff;
-      color:var(--ink);
-      cursor:pointer;
-      font-weight:700;
+      appearance:none; border:0; padding:10px 12px; border-radius:16px;
+      background:#fff; color:var(--ink); cursor:pointer; font-weight:800;
       box-shadow: 0 10px 20px rgba(0,0,0,.06);
       border:1px solid rgba(0,0,0,.06);
-      display:flex;
-      align-items:center;
-      gap:8px;
+      display:flex; align-items:center; gap:8px;
       transition: transform .08s ease, box-shadow .2s ease;
       user-select:none;
     }
     .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,.09)}
     .btn:active{transform: translateY(0px)}
-
     .btn.primary{background: linear-gradient(90deg, rgba(255,77,166,1), rgba(59,130,246,1)); color:white; border-color: transparent}
     .btn.danger{background: rgba(239,68,68,.10); color: var(--bad)}
+    .btn.ghost{background: transparent; box-shadow:none; border:1px dashed rgba(0,0,0,.18);}
 
     .content{padding:18px}
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    @media (max-width: 720px){
-      .grid{grid-template-columns:1fr;}
-    }
+    .grid{display:grid;grid-template-columns: 1fr 1fr;gap:14px;}
+    @media (max-width: 720px){ .grid{grid-template-columns:1fr;} }
 
     .field{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      padding:12px;
+      background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px;
     }
-
     .field label{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      font-weight:800;
-      margin-bottom:6px;
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
+      font-weight:900;margin-bottom:6px;
     }
-
-    .field label span{color:var(--muted); font-weight:700; font-size:12px}
-
+    .field label span{color:var(--muted); font-weight:800; font-size:12px}
     input[type="number"], select{
-      width:100%;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.14);
-      font-size:16px;
-      font-weight:700;
-      outline:none;
-      background:#fff;
+      width:100%; padding:10px 12px; border-radius:14px;
+      border:1px solid rgba(0,0,0,.14); font-size:16px; font-weight:800; outline:none; background:#fff;
     }
 
     .hint{
-      margin-top:10px;
-      padding:12px;
-      border-radius:18px;
+      margin-top:10px; padding:12px; border-radius:18px;
       background: rgba(59,130,246,.08);
       border:1px dashed rgba(59,130,246,.35);
-      color: #1c3b72;
-      font-weight:700;
-      font-size:14px;
+      color: #1c3b72; font-weight:800; font-size:14px;
+      line-height:1.35;
     }
 
     /* GAME */
-    .gameWrap{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .questionCard{
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .questionTop{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
+    .questionCard{padding:18px; display:flex; flex-direction:column; gap:14px;}
+    .questionTop{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
     .pill{
-      padding:8px 10px;
-      border-radius:999px;
+      padding:8px 10px;border-radius:999px;
       background: rgba(255,77,166,.12);
       border:1px solid rgba(255,77,166,.25);
-      font-weight:900;
-      font-size:13px;
-      display:flex;
-      align-items:center;
-      gap:8px;
+      font-weight:900;font-size:13px;
+      display:flex; align-items:center; gap:8px;
     }
-
     .pill.blue{background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.25)}
 
-    .timerBar{
-      width:100%;
-      height:12px;
-      border-radius:999px;
-      background: rgba(0,0,0,.06);
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.06);
-    }
-    .timerFill{
-      height:100%;
-      width:100%;
-      background: linear-gradient(90deg, rgba(16,185,129,1), rgba(59,130,246,1), rgba(255,77,166,1));
-      transform-origin:left;
-      transform: scaleX(1);
-      transition: transform .15s linear;
-    }
+    .timerBar{width:100%;height:12px;border-radius:999px;background: rgba(0,0,0,.06);overflow:hidden;border:1px solid rgba(0,0,0,.06);}
+    .timerFill{height:100%;width:100%;background: linear-gradient(90deg, rgba(16,185,129,1), rgba(59,130,246,1), rgba(255,77,166,1));
+      transform-origin:left;transform: scaleX(1);transition: transform .15s linear;}
 
     .qBig{
-      font-size:56px;
-      font-weight:900;
-      letter-spacing: .5px;
-      margin:0;
-      text-align:center;
-      padding:20px 12px;
-      border-radius: 22px;
+      font-size:56px;font-weight:900;letter-spacing: .5px;margin:0;text-align:center;
+      padding:20px 12px;border-radius: 22px;
       background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.65));
-      border:1px solid rgba(0,0,0,.06);
-      box-shadow: 0 16px 30px rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.06);box-shadow: 0 16px 30px rgba(0,0,0,.06);
     }
 
-    .answerRow{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
+    .answerRow{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;}
     .answerInput{
-      width:min(220px, 100%);
-      text-align:center;
-      font-size:22px;
-      padding:12px 14px;
-      border-radius:16px;
-      border:2px solid rgba(0,0,0,.14);
-      outline:none;
-      font-weight:900;
+      width:min(220px, 100%);text-align:center;font-size:22px;padding:12px 14px;
+      border-radius:16px;border:2px solid rgba(0,0,0,.14);outline:none;font-weight:900;
     }
-
     .answerInput:focus{border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 6px rgba(59,130,246,.14)}
 
-    .feedback{
-      min-height: 24px;
-      font-weight:900;
-      text-align:center;
-    }
+    .feedback{min-height: 24px;font-weight:900;text-align:center;}
     .feedback.good{color:var(--good)}
     .feedback.bad{color:var(--bad)}
 
-    .stats{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .stat{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:18px;
-      padding:10px;
-    }
+    .stats{display:grid;grid-template-columns: 1fr 1fr;gap:10px;}
+    .stat{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:10px;}
     .stat b{display:block; font-size:18px}
-    .stat span{color:var(--muted); font-weight:800; font-size:12px}
+    .stat span{color:var(--muted); font-weight:900; font-size:12px}
 
-    /* REVEAL (Right card) */
+    /* RIGHT: REVEAL */
+    .revealWrap{padding:18px;display:flex;flex-direction:column;gap:12px}
     .revealFrame{
-      position:relative;
-      border-radius: 22px;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,.08);
-      background:#fff;
-      box-shadow: 0 16px 30px rgba(0,0,0,.06);
-      aspect-ratio: 4 / 3;
-      display:grid;
-      place-items:center;
+      position:relative;border-radius: 22px;overflow:hidden;border:1px solid rgba(0,0,0,.08);
+      background:#fff;box-shadow: 0 16px 30px rgba(0,0,0,.06);
+      aspect-ratio: 4 / 3;display:grid;place-items:center;
     }
-
     .revealFrame img{
-      width:100%; height:100%;
-      object-fit: cover; /* default: cover (crop) */
+      width:100%;height:100%;
+      object-fit: cover;
       transform: scale(1.02);
       filter: blur(38px) saturate(.2) contrast(1.1) brightness(.9);
       transition: filter .35s ease, object-fit .25s ease;
     }
-
-    /* Optional: contain mode */
-    .revealFrame.contain img{ object-fit: contain; background: #fff; transform: none; }
+    .revealFrame.contain img{ object-fit: contain; background:#fff; transform:none; }
 
     .pixelLayer{
-      position:absolute;
-      inset:0;
-      pointer-events:none;
+      position:absolute;inset:0;pointer-events:none;
       background:
         radial-gradient(circle at 20% 30%, rgba(255,77,166,.28), transparent 45%),
         radial-gradient(circle at 70% 25%, rgba(59,130,246,.25), transparent 45%),
         radial-gradient(circle at 50% 70%, rgba(16,185,129,.20), transparent 45%),
         repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 6px, rgba(0,0,0,.06) 6px 12px);
-      mix-blend-mode: overlay;
-      opacity: .98;
-      transition: opacity .35s ease;
+      mix-blend-mode: overlay; opacity:.98; transition: opacity .35s ease;
     }
-
-    .veil{
-      position:absolute;
-      inset:0;
-      background: rgba(255,255,255,.02);
-      backdrop-filter: blur(18px);
-      transition: backdrop-filter .35s ease;
-    }
+    .veil{position:absolute;inset:0;background: rgba(255,255,255,.02); backdrop-filter: blur(18px); transition: backdrop-filter .35s ease;}
 
     .revealBadge{
-      position:absolute;
-      bottom:12px;
-      left:12px;
-      right:12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      background: rgba(255,255,255,.85);
-      border:1px solid rgba(0,0,0,.06);
-      border-radius: 18px;
-      padding:10px 12px;
-      font-weight:900;
+      position:absolute;bottom:12px;left:12px;right:12px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background: rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.06);
+      border-radius: 18px;padding:10px 12px;font-weight:900;
     }
-
-    .tiny{font-size:12px; color:var(--muted); font-weight:800}
-
+    .tiny{font-size:12px; color:var(--muted); font-weight:900}
+    .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+    .chip{padding:8px 10px;border-radius:999px;background: rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);font-weight:900;font-size:12.5px}
+    .chip.lock{background: rgba(239,68,68,.10);border-color: rgba(239,68,68,.25);color:#991b1b}
     .hidden{display:none!important}
   </style>
 </head>
@@ -343,7 +202,7 @@
 
 <div class="app">
 
-  <!-- LEFT: main -->
+  <!-- LEFT -->
   <section class="card" id="mainCard">
     <div class="header">
       <div class="brand">
@@ -367,7 +226,7 @@
       </div>
     </div>
 
-    <!-- SETUP SCREEN -->
+    <!-- SETUP -->
     <div class="content" id="setupScreen">
       <div class="grid">
         <div class="field">
@@ -383,33 +242,38 @@
           <input id="totalQuestions" type="number" min="100" max="500" value="120" inputmode="numeric" />
         </div>
         <div class="field">
-          <label>Zorluk <span>(resim daha geç açılır)</span></label>
+          <label>Zorluk <span>(kilit yüzdesi)</span></label>
           <select id="difficulty">
-            <option value="easy">Orta</option>
-            <option value="hard">Zor</option>
-            <option value="insane">Çok Zor</option>
+            <option value="easy">Orta (%70)</option>
+            <option value="hard">Zor (%75)</option>
+            <option value="insane">Çok Zor (%80)</option>
           </select>
         </div>
       </div>
 
       <div class="hint">
-        <b>Oyun Kuralları:</b>
+        <b>Kurallar:</b>
         <ul style="margin:8px 0 0 18px">
-          <li>1'ler ve 2'ler <b>yok</b> (3'ten başlar).</li>
-          <li>Cevaplar yazılarak verilir (sadece sayısal).</li>
-          <li>Doğru = puan, yanlış veya süre biterse = <b>ceza puanı</b>.</li>
-          <li>Sağdaki sticker <b>hedef puana kadar tamamen kilitli</b> kalır.</li>
+          <li>1'ler ve 2'ler yok (3'ten başlar).</li>
+          <li>Doğru +puan, yanlış veya süre biterse -ceza.</li>
+          <li>Sticker <b>kilitli</b> başlar. Teorik maksimum puanın belli yüzdesine gelince açılır.</li>
         </ul>
       </div>
 
       <div class="hint">
-        <b>Görsel ayarı:</b> Bazı resimler çok kırpılıyorsa sağ taraftaki kartta <b>Contain Mod</b> açabilirsin.
-        Bu mod kırpmak yerine resmi sığdırır.
-        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+        <b>Görsel ayarı:</b> Bazı resimler çok kırpılıyorsa <b>Contain Mod</b> aç.
+        <div class="row" style="margin-top:10px">
           <button class="btn" id="btnFitMode">
             <img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">
             Contain Mod: Kapalı
           </button>
+          <button class="btn ghost" id="btnTestImages" title="Eksik dosya var mı kontrol eder">
+            <img alt="check" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
+            Resimleri Test Et
+          </button>
+        </div>
+        <div class="tiny" style="margin-top:6px">
+          Resimler: <code>/assets/stickers/sticker-01..10</code> (png/jpg/jpeg olabilir)
         </div>
       </div>
 
@@ -421,68 +285,63 @@
       </div>
     </div>
 
-    <!-- GAME SCREEN -->
+    <!-- GAME -->
     <div class="content hidden" id="gameScreen">
-      <div class="gameWrap">
-        <div class="card questionCard" style="box-shadow:none; border:none; background:transparent">
-          <div class="questionTop">
-            <div class="pill" id="pillRound">
-              <img alt="soru" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2753.svg">
-              <span>Soru: <b id="qIndex">1</b> / <b id="qTotal">120</b></span>
-            </div>
-            <div class="pill blue" id="pillScore">
-              <img alt="puan" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3C6.svg">
-              <span>Puan: <b id="score">0</b></span>
-            </div>
-            <div class="pill" id="pillStreak" style="background:rgba(16,185,129,.12); border-color: rgba(16,185,129,.25)">
-              <img alt="ser" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F525.svg">
-              <span>Seri: <b id="streak">0</b></span>
-            </div>
+      <div class="card questionCard" style="box-shadow:none; border:none; background:transparent">
+        <div class="questionTop">
+          <div class="pill">
+            <img alt="soru" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2753.svg">
+            <span>Soru: <b id="qIndex">1</b> / <b id="qTotal">120</b></span>
           </div>
-
-          <div class="timerBar" aria-label="Kalan süre">
-            <div class="timerFill" id="timerFill"></div>
+          <div class="pill blue">
+            <img alt="puan" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3C6.svg">
+            <span>Puan: <b id="score">0</b></span>
           </div>
-
-          <p class="qBig" id="questionText">3 × 4 = ?</p>
-
-          <div class="answerRow">
-            <input class="answerInput" id="answerInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Cevap" />
-            <button class="btn primary" id="btnSubmit">
-              <img alt="ok" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
-              Gönder
-            </button>
+          <div class="pill" style="background:rgba(16,185,129,.12); border-color: rgba(16,185,129,.25)">
+            <img alt="seri" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F525.svg">
+            <span>Seri: <b id="streak">0</b></span>
           </div>
+        </div>
 
-          <div class="feedback" id="feedback"></div>
+        <div class="timerBar"><div class="timerFill" id="timerFill"></div></div>
+        <p class="qBig" id="questionText">3 × 4 = ?</p>
 
-          <div class="stats">
-            <div class="stat"><b id="correct">0</b><span>Doğru</span></div>
-            <div class="stat"><b id="wrong">0</b><span>Yanlış / Süre</span></div>
-            <div class="stat"><b id="best">0</b><span>En Yüksek Puan</span></div>
-            <div class="stat"><b id="target">0</b><span>Resim hedef puanı</span></div>
-          </div>
+        <div class="answerRow">
+          <input class="answerInput" id="answerInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Cevap" />
+          <button class="btn primary" id="btnSubmit">
+            <img alt="ok" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
+            Gönder
+          </button>
+        </div>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:6px">
-            <button class="btn" id="btnSkip" title="Süre dolunca zaten yanlış sayılır. Bu sadece hızlı geçmek içindir.">
-              <img alt="geç" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23E9.svg">
-              Geç
-            </button>
-            <button class="btn" id="btnPause">
-              <img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg">
-              Duraklat
-            </button>
-          </div>
+        <div class="feedback" id="feedback"></div>
+
+        <div class="stats">
+          <div class="stat"><b id="correct">0</b><span>Doğru</span></div>
+          <div class="stat"><b id="wrong">0</b><span>Yanlış / Süre</span></div>
+          <div class="stat"><b id="best">0</b><span>En Yüksek Puan</span></div>
+          <div class="stat"><b id="unlockScoreUI">0</b><span>Kilit eşiği</span></div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:6px">
+          <button class="btn" id="btnSkip">
+            <img alt="geç" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23E9.svg">
+            Geç
+          </button>
+          <button class="btn" id="btnPause">
+            <img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg">
+            Duraklat
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- RESULT SCREEN -->
+    <!-- RESULT -->
     <div class="content hidden" id="resultScreen">
       <div class="card" style="box-shadow:none; border:1px solid rgba(0,0,0,.06)">
         <div class="content" style="padding:18px">
           <h2 style="margin:0 0 8px 0">Tebrikler Nil Belis!</h2>
-          <p style="margin:0 0 12px 0; font-weight:800; color:var(--muted)">
+          <p style="margin:0 0 12px 0; font-weight:900; color:var(--muted)">
             Oyun bitti. İstersen ayarları değiştirip tekrar oynayabilirsin.
           </p>
 
@@ -491,6 +350,8 @@
             <div class="stat"><b id="finalCorrect">0</b><span>Doğru</span></div>
             <div class="stat"><b id="finalWrong">0</b><span>Yanlış / Süre</span></div>
           </div>
+
+          <div class="hint" id="unlockMsg" style="margin-top:12px"></div>
 
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
             <button class="btn primary" id="btnPlayAgain">
@@ -507,7 +368,7 @@
     </div>
   </section>
 
-  <!-- RIGHT: reveal only -->
+  <!-- RIGHT -->
   <aside class="card" id="sideCard">
     <div class="header">
       <div class="brand">
@@ -516,28 +377,34 @@
         </div>
         <div>
           <h1 style="font-size:18px">Gizli Sticker</h1>
-          <p>Puan topladıkça yavaş yavaş netleşir</p>
+          <p>Puan topladıkça netleşir</p>
         </div>
       </div>
     </div>
-    <div class="content" style="padding:18px">
+    <div class="revealWrap">
+      <div class="row">
+        <div class="chip lock" id="lockChip">KİLİTLİ</div>
+        <div class="chip" id="progressChip">0%</div>
+      </div>
+
       <div class="revealFrame" id="revealFrame">
         <img id="revealImg" alt="Gizli resim" src="" />
         <div class="pixelLayer" id="pixelLayer"></div>
         <div class="veil" id="veil"></div>
         <div class="revealBadge">
           <div>
-            <div style="font-size:14px">Netlik kilidi</div>
-            <div class="tiny">Hedef puan dolmadan görünmez</div>
+            <div style="font-size:14px">Netlik</div>
+            <div class="tiny">Asla %100 olmaz</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:14px">Netlik: <b id="clarity">0%</b></div>
+            <div style="font-size:14px"><b id="clarity">0%</b></div>
             <div class="tiny">Hedefe göre</div>
           </div>
         </div>
       </div>
-      <div class="hint" style="margin-top:12px">
-        <b>Not:</b> Resimler yüklenmezse otomatik olarak varsayılan bir ikon gösterilir (fallback).
+
+      <div class="hint" style="margin:0">
+        <b>Resim yüklenmezse:</b> Otomatik olarak varsayılan bir ikon gösterilir (fallback).
       </div>
     </div>
   </aside>
@@ -545,16 +412,6 @@
 </div>
 
 <script>
-  /************************************************************
-   * Nil Belis Çarpım Macerası
-   * Tek dosya: HTML + CSS + JS
-   ************************************************************/
-
-  // Yerel sticker görselleri (senin ekleyeceklerin)
-  // Dosyaları repo içine koy: /assets/stickers/
-  // Bu isimlerle kaydet:
-  // sticker-01.png ... sticker-10.png (formatlar karışık olabilir)
-  // Eğer uzantılar farklıysa sadece aşağıdaki listeyi güncelle.
   const STICKER_IMAGES = [
     "assets/stickers/sticker-01.jpg",
     "assets/stickers/sticker-02.jpg",
@@ -568,10 +425,7 @@
     "assets/stickers/sticker-10.jpg"
   ];
 
-  // Fallback görsel (uzak bir SVG - resimler yüklenmezse görünür)
   const FALLBACK_IMG = "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F47E.svg";
-
-  // Ücretsiz müzik: Pixabay (örnek)
   const MUSIC_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e1f0c1b08.mp3?filename=happy-kids-112193.mp3";
 
   const els = {
@@ -586,10 +440,12 @@
 
     btnStart: document.getElementById("btnStart"),
     btnQuit: document.getElementById("btnQuit"),
-
     btnSubmit: document.getElementById("btnSubmit"),
     btnSkip: document.getElementById("btnSkip"),
     btnPause: document.getElementById("btnPause"),
+    btnMusic: document.getElementById("btnMusic"),
+    btnFitMode: document.getElementById("btnFitMode"),
+    btnTestImages: document.getElementById("btnTestImages"),
 
     questionText: document.getElementById("questionText"),
     answerInput: document.getElementById("answerInput"),
@@ -602,7 +458,7 @@
     correct: document.getElementById("correct"),
     wrong: document.getElementById("wrong"),
     best: document.getElementById("best"),
-    target: document.getElementById("target"),
+    unlockScoreUI: document.getElementById("unlockScoreUI"),
 
     timerFill: document.getElementById("timerFill"),
 
@@ -611,19 +467,18 @@
     pixelLayer: document.getElementById("pixelLayer"),
     veil: document.getElementById("veil"),
     clarity: document.getElementById("clarity"),
+    lockChip: document.getElementById("lockChip"),
+    progressChip: document.getElementById("progressChip"),
 
     finalScore: document.getElementById("finalScore"),
     finalCorrect: document.getElementById("finalCorrect"),
     finalWrong: document.getElementById("finalWrong"),
+    unlockMsg: document.getElementById("unlockMsg"),
 
     btnPlayAgain: document.getElementById("btnPlayAgain"),
     btnBackToSetup: document.getElementById("btnBackToSetup"),
-
-    btnMusic: document.getElementById("btnMusic"),
-    btnFitMode: document.getElementById("btnFitMode"),
   };
 
-  // State
   const state = {
     settings: null,
     scoring: null,
@@ -636,44 +491,27 @@
     streak: 0,
     paused: false,
 
-    // Timer
     remainingMs: 0,
     startedAt: 0,
     rafId: null,
 
-    // Reveal
-    revealTarget: 0,
+    revealUnlockScore: 0,
+    revealMaxPossibleScore: 0,
 
-    // Music
     audio: null,
     musicOn: false,
 
-    // Fit mode
     containMode: false,
   };
 
-  // Best score
-  const BEST_KEY = "nilbelis_mul_best_score_v2";
-  function loadBest(){
-    const v = Number(localStorage.getItem(BEST_KEY) || 0);
-    return Number.isFinite(v) ? v : 0;
-  }
+  const BEST_KEY = "nilbelis_mul_best_score_v3";
+  function loadBest(){ const v = Number(localStorage.getItem(BEST_KEY) || 0); return Number.isFinite(v) ? v : 0; }
   function saveBest(v){ localStorage.setItem(BEST_KEY, String(v)); }
-
-  // Utility: clamp
   const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
-  // Numeric-only input
-  els.answerInput.addEventListener("input", () => {
-    els.answerInput.value = els.answerInput.value.replace(/[^0-9]/g, "");
-  });
+  els.answerInput.addEventListener("input", () => { els.answerInput.value = els.answerInput.value.replace(/[^0-9]/g, ""); });
+  els.answerInput.addEventListener("keydown", (e) => { if(e.key === "Enter") submitAnswer(); });
 
-  // Enter to submit
-  els.answerInput.addEventListener("keydown", (e) => {
-    if(e.key === "Enter") submitAnswer();
-  });
-
-  // Music
   function ensureAudio(){
     if(state.audio) return;
     const a = new Audio(MUSIC_URL);
@@ -694,7 +532,6 @@
   }
   els.btnMusic.addEventListener("click", toggleMusic);
 
-  // Fit mode (contain vs cover)
   function toggleFitMode(){
     state.containMode = !state.containMode;
     els.revealFrame.classList.toggle("contain", state.containMode);
@@ -704,7 +541,6 @@
   }
   els.btnFitMode.addEventListener("click", toggleFitMode);
 
-  // Settings
   function readSettings(){
     const maxTable = clamp(parseInt(els.maxTable.value || "12",10), 10, 20);
     const timeLimit = clamp(parseInt(els.timeLimit.value || "8",10), 2, 10);
@@ -713,49 +549,38 @@
     return { maxTable, timeLimit, totalQuestions, difficulty };
   }
 
-  // Scoring
   function computeScoring(settings){
     const { maxTable, timeLimit, totalQuestions, difficulty } = settings;
 
     const levelFactor = 1 + (maxTable - 10) * 0.06;
-    const timeFactor = 1 + (10 - timeLimit) * 0.05;
-    const countFactor = 1 + (totalQuestions - 100) * 0.00075;
-
-    const diff = {
-      easy: { reveal: 1.00, penalty: 1.00 },
-      hard: { reveal: 1.18, penalty: 1.12 },
-      insane:{ reveal: 1.35, penalty: 1.25 },
-    }[difficulty] || { reveal: 1.18, penalty: 1.12 };
+    const timeFactor  = 1 + (10 - timeLimit) * 0.05;
+    const diffPenalty = (difficulty === "easy") ? 1.00 : (difficulty === "hard") ? 1.12 : 1.25;
 
     const baseCorrect = 10;
     const correctPoints = Math.round(baseCorrect * levelFactor * timeFactor);
-    const wrongPenalty = Math.round((correctPoints * 0.70 + 3) * diff.penalty);
     const streakBonusUnit = Math.max(1, Math.round(correctPoints * 0.10));
-    const targetScore = Math.round(
-      correctPoints * totalQuestions * 0.55 * countFactor * diff.reveal
-    );
+    const wrongPenalty = Math.round((correctPoints * 0.70 + 3) * diffPenalty);
 
-    return { correctPoints, wrongPenalty, streakBonusUnit, targetScore };
+    const maxPossibleScore = Math.round((correctPoints * totalQuestions) * 1.20);
+    const unlockRatio = (difficulty === "easy") ? 0.70 : (difficulty === "hard") ? 0.75 : 0.80;
+    const unlockScore = Math.round(maxPossibleScore * unlockRatio);
+
+    return { correctPoints, wrongPenalty, streakBonusUnit, maxPossibleScore, unlockScore, unlockRatio };
   }
 
-  // Questions exclude 1 and 2
+  function randInt(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
   function makeQuestion(maxTable){
     const a = randInt(3, maxTable);
     const b = randInt(3, maxTable);
     return { a, b, ans: a*b };
   }
-  function randInt(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
 
-  // Screen switch
   function showScreen(which){
     els.setupScreen.classList.toggle("hidden", which !== "setup");
     els.gameScreen.classList.toggle("hidden", which !== "game");
     els.resultScreen.classList.toggle("hidden", which !== "result");
   }
 
-  // Robust image loader with fallback
   function setRevealImage(url){
     els.revealImg.onerror = () => {
       els.revealImg.onerror = null;
@@ -764,7 +589,27 @@
     els.revealImg.src = url;
   }
 
-  // Start game
+  async function testImages(){
+    const results = [];
+    for(const url of STICKER_IMAGES){
+      const ok = await new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url + `?cacheBust=${Date.now()}`;
+      });
+      results.push({ url, ok });
+    }
+    const missing = results.filter(r => !r.ok);
+    if(missing.length === 0){
+      alert("Harika! Tüm sticker dosyaları bulundu ✅");
+    } else {
+      const list = missing.map(m => m.url).join("\n");
+      alert("Bazı sticker dosyaları bulunamadı ❌\n\n" + list + "\n\nKlasör/isim/uzantı kontrol et.");
+    }
+  }
+  els.btnTestImages.addEventListener("click", testImages);
+
   function startGame(){
     const settings = readSettings();
     const scoring = computeScoring(settings);
@@ -780,16 +625,16 @@
     state.streak = 0;
     state.paused = false;
 
-    // Sticker per game
+    state.revealUnlockScore = scoring.unlockScore;
+    state.revealMaxPossibleScore = scoring.maxPossibleScore;
+
     const img = STICKER_IMAGES[randInt(0, STICKER_IMAGES.length - 1)];
     setRevealImage(img);
 
-    state.revealTarget = scoring.targetScore;
-
-    // UI
     els.qTotal.textContent = String(state.total);
     els.best.textContent = String(loadBest());
-    els.target.textContent = String(state.revealTarget);
+    els.unlockScoreUI.textContent = String(state.revealUnlockScore);
+
     els.btnQuit.classList.remove("hidden");
 
     showScreen("game");
@@ -797,13 +642,13 @@
     nextQuestion();
   }
 
-  // Timer
   function stopTimer(){
     if(state.rafId){
       cancelAnimationFrame(state.rafId);
       state.rafId = null;
     }
   }
+
   function startTimer(seconds){
     stopTimer();
     state.remainingMs = seconds * 1000;
@@ -834,7 +679,6 @@
     state.rafId = requestAnimationFrame(tick);
   }
 
-  // Next question
   function nextQuestion(){
     if(state.index >= state.total){
       endGame();
@@ -859,17 +703,14 @@
     if(type) els.feedback.classList.add(type);
   }
 
-  // Submit
   function submitAnswer(){
     if(!state.current) return;
     if(state.paused) return;
-
     const val = els.answerInput.value.trim();
     if(val === "") return;
 
     stopTimer();
     const n = Number(val);
-
     if(n === state.current.ans) handleCorrect();
     else handleWrong(false);
   }
@@ -880,8 +721,8 @@
 
     const { correctPoints, streakBonusUnit } = state.scoring;
     const bonus = Math.min(8, Math.floor(state.streak / 3)) * streakBonusUnit;
-
     state.score += (correctPoints + bonus);
+
     setFeedback(`Doğru! +${correctPoints}${bonus?` (+${bonus} seri bonusu)`: ""}`, "good");
     afterAnswer();
   }
@@ -905,7 +746,6 @@
     state.score = Math.max(0, state.score);
     renderStats();
     updateReveal();
-
     setTimeout(() => nextQuestion(), 650);
   }
 
@@ -917,12 +757,18 @@
     els.best.textContent = String(loadBest());
   }
 
-  // Reveal logic with hard lock until target score
   function updateReveal(){
-    const t = state.revealTarget || 1;
+    const unlock = state.revealUnlockScore || 1;
+    const maxScore = Math.max(unlock + 1, state.revealMaxPossibleScore || (unlock * 1.25));
+    const overallRatio = clamp(state.score / unlock, 0, 1);
 
-    // LOCK: until target reached, keep totally unrecognizable
-    if(state.score < t){
+    els.progressChip.textContent = `${Math.round(overallRatio * 100)}%`;
+    const locked = state.score < unlock;
+
+    els.lockChip.textContent = locked ? "KİLİTLİ" : "AÇILDI";
+    els.lockChip.classList.toggle("lock", locked);
+
+    if(locked){
       els.clarity.textContent = `0%`;
       els.revealImg.style.filter = `blur(38px) saturate(0.2) contrast(1.1) brightness(0.9)`;
       els.pixelLayer.style.opacity = "0.98";
@@ -930,8 +776,7 @@
       return;
     }
 
-    // After unlock: ratio from t..(t*1.6)
-    const postRatio = clamp((state.score - t) / (t * 0.6), 0, 1);
+    const postRatio = clamp((state.score - unlock) / (maxScore - unlock), 0, 1);
 
     const clarity = Math.round(postRatio * 88);
     els.clarity.textContent = `${clarity}%`;
@@ -948,7 +793,6 @@
     els.veil.style.backdropFilter = `blur(${(3 + (1-postRatio)*6).toFixed(1)}px)`;
   }
 
-  // Pause
   function togglePause(){
     if(!state.current) return;
     state.paused = !state.paused;
@@ -958,7 +802,6 @@
     setFeedback(state.paused ? "Duraklatıldı. Devam için Devam'a bas." : "", "");
   }
 
-  // End game
   function endGame(){
     stopTimer();
     els.btnQuit.classList.add("hidden");
@@ -970,16 +813,21 @@
     els.finalCorrect.textContent = String(state.correct);
     els.finalWrong.textContent = String(state.wrong);
 
+    const unlock = state.revealUnlockScore || 0;
+    if(state.score >= unlock){
+      els.unlockMsg.textContent = `Sticker kilidi açıldı. Netliği artırmak için daha yüksek puan hedefle! (Eşik: ${unlock})`;
+    } else {
+      els.unlockMsg.textContent = `Sticker henüz açılmadı. Bir sonraki oyunda hedefe yaklaşacağız! (Eşik: ${unlock}, Şu an: ${state.score})`;
+    }
+
     showScreen("result");
   }
 
-  // Quit
   function quitGame(){
     if(!confirm("Oyunu bitirmek istiyor musun?")) return;
     endGame();
   }
 
-  // Bind
   els.btnStart.addEventListener("click", startGame);
   els.btnSubmit.addEventListener("click", submitAnswer);
   els.btnSkip.addEventListener("click", () => { stopTimer(); handleWrong(false); });
@@ -993,11 +841,9 @@
     showScreen("setup");
   });
 
-  // Init
   els.best.textContent = String(loadBest());
-  setRevealImage(FALLBACK_IMG); // initial image
+  setRevealImage(FALLBACK_IMG);
   updateReveal();
-
 </script>
 
 </body>
