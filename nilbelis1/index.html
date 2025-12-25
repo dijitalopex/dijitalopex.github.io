@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nil Belis Çarpım Macerası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#eef6ff;
+      --card:#ffffffcc;
+      --ink:#1f2a44;
+      --muted:#6b7280;
+      --accent:#ff4da6;
+      --accent2:#3b82f6;
+      --good:#16a34a;
+      --bad:#ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Baloo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 900px at 10% 10%, var(--bg1), transparent 60%),
+        radial-gradient(1200px 900px at 90% 20%, var(--bg2), transparent 60%),
+        linear-gradient(120deg, #ffffff, #f7fbff);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .app{
+      width:min(1100px, 100%);
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+    }
+
+    @media (max-width: 960px){
+      .app{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      background:var(--card);
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .header{
+      padding:16px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(0,0,0,.06);
+      background: linear-gradient(90deg, rgba(255,77,166,.18), rgba(59,130,246,.12));
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .brand .logo{
+      width:42px;height:42px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.07);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+    }
+
+    .brand h1{margin:0;font-size:20px;line-height:1.1}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    .header .actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    .btn{
+      appearance:none;
+      border:0;
+      padding:10px 12px;
+      border-radius:16px;
+      background:#fff;
+      color:var(--ink);
+      cursor:pointer;
+      font-weight:700;
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,.06);
+      display:flex;
+      align-items:center;
+      gap:8px;
+      transition: transform .08s ease, box-shadow .2s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,.09)}
+    .btn:active{transform: translateY(0px)}
+
+    .btn.primary{background: linear-gradient(90deg, rgba(255,77,166,1), rgba(59,130,246,1)); color:white; border-color: transparent}
+    .btn.danger{background: rgba(239,68,68,.10); color: var(--bad)}
+
+    .content{padding:18px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 720px){
+      .grid{grid-template-columns:1fr;}
+    }
+
+    .field{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:18px;
+      padding:12px;
+    }
+
+    .field label{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+
+    .field label span{color:var(--muted); font-weight:700; font-size:12px}
+
+    input[type="number"], select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.14);
+      font-size:16px;
+      font-weight:700;
+      outline:none;
+      background:#fff;
+    }
+
+    .hint{
+      margin-top:10px;
+      padding:12px;
+      border-radius:18px;
+      background: rgba(59,130,246,.08);
+      border:1px dashed rgba(59,130,246,.35);
+      color: #1c3b72;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    /* GAME */
+    .gameWrap{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .questionCard{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .questionTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(255,77,166,.12);
+      border:1px solid rgba(255,77,166,.25);
+      font-weight:900;
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .pill.blue{background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.25)}
+
+    .timerBar{
+      width:100%;
+      height:12px;
+      border-radius:999px;
+      background: rgba(0,0,0,.06);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+    }
+    .timerFill{
+      height:100%;
+      width:100%;
+      background: linear-gradient(90deg, rgba(16,185,129,1), rgba(59,130,246,1), rgba(255,77,166,1));
+      transform-origin:left;
+      transform: scaleX(1);
+      transition: transform .15s linear;
+    }
+
+    .qBig{
+      font-size:56px;
+      font-weight:900;
+      letter-spacing: .5px;
+      margin:0;
+      text-align:center;
+      padding:20px 12px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.65));
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow: 0 16px 30px rgba(0,0,0,.06);
+    }
+
+    .answerRow{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .answerInput{
+      width:min(220px, 100%);
+      text-align:center;
+      font-size:22px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:2px solid rgba(0,0,0,.14);
+      outline:none;
+      font-weight:900;
+    }
+
+    .answerInput:focus{border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 6px rgba(59,130,246,.14)}
+
+    .feedback{
+      min-height: 24px;
+      font-weight:900;
+      text-align:center;
+    }
+    .feedback.good{color:var(--good)}
+    .feedback.bad{color:var(--bad)}
+
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .stat{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:18px;
+      padding:10px;
+    }
+    .stat b{display:block; font-size:18px}
+    .stat span{color:var(--muted); font-weight:800; font-size:12px}
+
+    /* REVEAL (Right card) */
+    .revealFrame{
+      position:relative;
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.08);
+      background:#fff;
+      box-shadow: 0 16px 30px rgba(0,0,0,.06);
+      aspect-ratio: 4 / 3;
+      display:grid;
+      place-items:center;
+    }
+
+    .revealFrame img{
+      width:100%; height:100%;
+      object-fit: cover; /* default: cover (crop) */
+      transform: scale(1.02);
+      filter: blur(38px) saturate(.2) contrast(1.1) brightness(.9);
+      transition: filter .35s ease, object-fit .25s ease;
+    }
+
+    /* Optional: contain mode */
+    .revealFrame.contain img{ object-fit: contain; background: #fff; transform: none; }
+
+    .pixelLayer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,77,166,.28), transparent 45%),
+        radial-gradient(circle at 70% 25%, rgba(59,130,246,.25), transparent 45%),
+        radial-gradient(circle at 50% 70%, rgba(16,185,129,.20), transparent 45%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 6px, rgba(0,0,0,.06) 6px 12px);
+      mix-blend-mode: overlay;
+      opacity: .98;
+      transition: opacity .35s ease;
+    }
+
+    .veil{
+      position:absolute;
+      inset:0;
+      background: rgba(255,255,255,.02);
+      backdrop-filter: blur(18px);
+      transition: backdrop-filter .35s ease;
+    }
+
+    .revealBadge{
+      position:absolute;
+      bottom:12px;
+      left:12px;
+      right:12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background: rgba(255,255,255,.85);
+      border:1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      padding:10px 12px;
+      font-weight:900;
+    }
+
+    .tiny{font-size:12px; color:var(--muted); font-weight:800}
+
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- LEFT: main -->
+  <section class="card" id="mainCard">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">
+          <img alt="ikon" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg">
+        </div>
+        <div>
+          <h1>Nil Belis Çarpım Macerası</h1>
+          <p>Hızlı çarp, puan topla, gizli sticker aç.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btnMusic" title="Müzik aç/kapat">
+          <img alt="müzik" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3B5.svg">
+          Müzik
+        </button>
+        <button class="btn danger hidden" id="btnQuit">
+          <img alt="çık" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F6AB.svg">
+          Bitir
+        </button>
+      </div>
+    </div>
+
+    <!-- SETUP SCREEN -->
+    <div class="content" id="setupScreen">
+      <div class="grid">
+        <div class="field">
+          <label>Kaçlara kadar? <span>(min 10)</span></label>
+          <input id="maxTable" type="number" min="10" max="20" value="12" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label>Soru süresi (sn) <span>(max 10)</span></label>
+          <input id="timeLimit" type="number" min="2" max="10" value="8" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label>Oyun (soru) sayısı <span>(min 100)</span></label>
+          <input id="totalQuestions" type="number" min="100" max="500" value="120" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label>Zorluk <span>(resim daha geç açılır)</span></label>
+          <select id="difficulty">
+            <option value="easy">Orta</option>
+            <option value="hard">Zor</option>
+            <option value="insane">Çok Zor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="hint">
+        <b>Oyun Kuralları:</b>
+        <ul style="margin:8px 0 0 18px">
+          <li>1'ler ve 2'ler <b>yok</b> (3'ten başlar).</li>
+          <li>Cevaplar yazılarak verilir (sadece sayısal).</li>
+          <li>Doğru = puan, yanlış veya süre biterse = <b>ceza puanı</b>.</li>
+          <li>Sağdaki sticker <b>hedef puana kadar tamamen kilitli</b> kalır.</li>
+        </ul>
+      </div>
+
+      <div class="hint">
+        <b>Görsel ayarı:</b> Bazı resimler çok kırpılıyorsa sağ taraftaki kartta <b>Contain Mod</b> açabilirsin.
+        Bu mod kırpmak yerine resmi sığdırır.
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn" id="btnFitMode">
+            <img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">
+            Contain Mod: Kapalı
+          </button>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
+        <button class="btn primary" id="btnStart">
+          <img alt="başla" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg">
+          Başla Nil Belis!
+        </button>
+      </div>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div class="content hidden" id="gameScreen">
+      <div class="gameWrap">
+        <div class="card questionCard" style="box-shadow:none; border:none; background:transparent">
+          <div class="questionTop">
+            <div class="pill" id="pillRound">
+              <img alt="soru" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2753.svg">
+              <span>Soru: <b id="qIndex">1</b> / <b id="qTotal">120</b></span>
+            </div>
+            <div class="pill blue" id="pillScore">
+              <img alt="puan" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3C6.svg">
+              <span>Puan: <b id="score">0</b></span>
+            </div>
+            <div class="pill" id="pillStreak" style="background:rgba(16,185,129,.12); border-color: rgba(16,185,129,.25)">
+              <img alt="ser" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F525.svg">
+              <span>Seri: <b id="streak">0</b></span>
+            </div>
+          </div>
+
+          <div class="timerBar" aria-label="Kalan süre">
+            <div class="timerFill" id="timerFill"></div>
+          </div>
+
+          <p class="qBig" id="questionText">3 × 4 = ?</p>
+
+          <div class="answerRow">
+            <input class="answerInput" id="answerInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Cevap" />
+            <button class="btn primary" id="btnSubmit">
+              <img alt="ok" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
+              Gönder
+            </button>
+          </div>
+
+          <div class="feedback" id="feedback"></div>
+
+          <div class="stats">
+            <div class="stat"><b id="correct">0</b><span>Doğru</span></div>
+            <div class="stat"><b id="wrong">0</b><span>Yanlış / Süre</span></div>
+            <div class="stat"><b id="best">0</b><span>En Yüksek Puan</span></div>
+            <div class="stat"><b id="target">0</b><span>Resim hedef puanı</span></div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:6px">
+            <button class="btn" id="btnSkip" title="Süre dolunca zaten yanlış sayılır. Bu sadece hızlı geçmek içindir.">
+              <img alt="geç" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23E9.svg">
+              Geç
+            </button>
+            <button class="btn" id="btnPause">
+              <img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg">
+              Duraklat
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="content hidden" id="resultScreen">
+      <div class="card" style="box-shadow:none; border:1px solid rgba(0,0,0,.06)">
+        <div class="content" style="padding:18px">
+          <h2 style="margin:0 0 8px 0">Tebrikler Nil Belis!</h2>
+          <p style="margin:0 0 12px 0; font-weight:800; color:var(--muted)">
+            Oyun bitti. İstersen ayarları değiştirip tekrar oynayabilirsin.
+          </p>
+
+          <div class="stats" style="grid-template-columns:1fr 1fr 1fr; margin-top:12px">
+            <div class="stat"><b id="finalScore">0</b><span>Toplam Puan</span></div>
+            <div class="stat"><b id="finalCorrect">0</b><span>Doğru</span></div>
+            <div class="stat"><b id="finalWrong">0</b><span>Yanlış / Süre</span></div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
+            <button class="btn primary" id="btnPlayAgain">
+              <img alt="yeniden" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F504.svg">
+              Tekrar Oyna
+            </button>
+            <button class="btn" id="btnBackToSetup">
+              <img alt="ayar" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2699.svg">
+              Ayarlara Dön
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT: reveal only -->
+  <aside class="card" id="sideCard">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">
+          <img alt="resim" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">
+        </div>
+        <div>
+          <h1 style="font-size:18px">Gizli Sticker</h1>
+          <p>Puan topladıkça yavaş yavaş netleşir</p>
+        </div>
+      </div>
+    </div>
+    <div class="content" style="padding:18px">
+      <div class="revealFrame" id="revealFrame">
+        <img id="revealImg" alt="Gizli resim" src="" />
+        <div class="pixelLayer" id="pixelLayer"></div>
+        <div class="veil" id="veil"></div>
+        <div class="revealBadge">
+          <div>
+            <div style="font-size:14px">Netlik kilidi</div>
+            <div class="tiny">Hedef puan dolmadan görünmez</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:14px">Netlik: <b id="clarity">0%</b></div>
+            <div class="tiny">Hedefe göre</div>
+          </div>
+        </div>
+      </div>
+      <div class="hint" style="margin-top:12px">
+        <b>Not:</b> Resimler yüklenmezse otomatik olarak varsayılan bir ikon gösterilir (fallback).
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<script>
+  /************************************************************
+   * Nil Belis Çarpım Macerası
+   * Tek dosya: HTML + CSS + JS
+   ************************************************************/
+
+  // Yerel sticker görselleri (senin ekleyeceklerin)
+  // Dosyaları repo içine koy: /assets/stickers/
+  // Bu isimlerle kaydet:
+  // sticker-01.png ... sticker-10.png (formatlar karışık olabilir)
+  // Eğer uzantılar farklıysa sadece aşağıdaki listeyi güncelle.
+  const STICKER_IMAGES = [
+    "assets/stickers/sticker-01.png",
+    "assets/stickers/sticker-02.png",
+    "assets/stickers/sticker-03.jpg",
+    "assets/stickers/sticker-04.png",
+    "assets/stickers/sticker-05.jpeg",
+    "assets/stickers/sticker-06.png",
+    "assets/stickers/sticker-07.jpg",
+    "assets/stickers/sticker-08.png",
+    "assets/stickers/sticker-09.jpeg",
+    "assets/stickers/sticker-10.png"
+  ];
+
+  // Fallback görsel (uzak bir SVG - resimler yüklenmezse görünür)
+  const FALLBACK_IMG = "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F47E.svg";
+
+  // Ücretsiz müzik: Pixabay (örnek)
+  const MUSIC_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e1f0c1b08.mp3?filename=happy-kids-112193.mp3";
+
+  const els = {
+    setupScreen: document.getElementById("setupScreen"),
+    gameScreen: document.getElementById("gameScreen"),
+    resultScreen: document.getElementById("resultScreen"),
+
+    maxTable: document.getElementById("maxTable"),
+    timeLimit: document.getElementById("timeLimit"),
+    totalQuestions: document.getElementById("totalQuestions"),
+    difficulty: document.getElementById("difficulty"),
+
+    btnStart: document.getElementById("btnStart"),
+    btnQuit: document.getElementById("btnQuit"),
+
+    btnSubmit: document.getElementById("btnSubmit"),
+    btnSkip: document.getElementById("btnSkip"),
+    btnPause: document.getElementById("btnPause"),
+
+    questionText: document.getElementById("questionText"),
+    answerInput: document.getElementById("answerInput"),
+    feedback: document.getElementById("feedback"),
+
+    qIndex: document.getElementById("qIndex"),
+    qTotal: document.getElementById("qTotal"),
+    score: document.getElementById("score"),
+    streak: document.getElementById("streak"),
+    correct: document.getElementById("correct"),
+    wrong: document.getElementById("wrong"),
+    best: document.getElementById("best"),
+    target: document.getElementById("target"),
+
+    timerFill: document.getElementById("timerFill"),
+
+    revealFrame: document.getElementById("revealFrame"),
+    revealImg: document.getElementById("revealImg"),
+    pixelLayer: document.getElementById("pixelLayer"),
+    veil: document.getElementById("veil"),
+    clarity: document.getElementById("clarity"),
+
+    finalScore: document.getElementById("finalScore"),
+    finalCorrect: document.getElementById("finalCorrect"),
+    finalWrong: document.getElementById("finalWrong"),
+
+    btnPlayAgain: document.getElementById("btnPlayAgain"),
+    btnBackToSetup: document.getElementById("btnBackToSetup"),
+
+    btnMusic: document.getElementById("btnMusic"),
+    btnFitMode: document.getElementById("btnFitMode"),
+  };
+
+  // State
+  const state = {
+    settings: null,
+    scoring: null,
+    current: null,
+    index: 0,
+    total: 0,
+    score: 0,
+    correct: 0,
+    wrong: 0,
+    streak: 0,
+    paused: false,
+
+    // Timer
+    remainingMs: 0,
+    startedAt: 0,
+    rafId: null,
+
+    // Reveal
+    revealTarget: 0,
+
+    // Music
+    audio: null,
+    musicOn: false,
+
+    // Fit mode
+    containMode: false,
+  };
+
+  // Best score
+  const BEST_KEY = "nilbelis_mul_best_score_v2";
+  function loadBest(){
+    const v = Number(localStorage.getItem(BEST_KEY) || 0);
+    return Number.isFinite(v) ? v : 0;
+  }
+  function saveBest(v){ localStorage.setItem(BEST_KEY, String(v)); }
+
+  // Utility: clamp
+  const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
+
+  // Numeric-only input
+  els.answerInput.addEventListener("input", () => {
+    els.answerInput.value = els.answerInput.value.replace(/[^0-9]/g, "");
+  });
+
+  // Enter to submit
+  els.answerInput.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") submitAnswer();
+  });
+
+  // Music
+  function ensureAudio(){
+    if(state.audio) return;
+    const a = new Audio(MUSIC_URL);
+    a.loop = true;
+    a.volume = 0.6;
+    state.audio = a;
+  }
+  function toggleMusic(){
+    ensureAudio();
+    state.musicOn = !state.musicOn;
+    if(state.musicOn){
+      state.audio.play().catch(()=>{});
+      els.btnMusic.classList.add("primary");
+    } else {
+      state.audio.pause();
+      els.btnMusic.classList.remove("primary");
+    }
+  }
+  els.btnMusic.addEventListener("click", toggleMusic);
+
+  // Fit mode (contain vs cover)
+  function toggleFitMode(){
+    state.containMode = !state.containMode;
+    els.revealFrame.classList.toggle("contain", state.containMode);
+    els.btnFitMode.innerHTML = state.containMode
+      ? `<img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg"> Contain Mod: Açık`
+      : `<img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg"> Contain Mod: Kapalı`;
+  }
+  els.btnFitMode.addEventListener("click", toggleFitMode);
+
+  // Settings
+  function readSettings(){
+    const maxTable = clamp(parseInt(els.maxTable.value || "12",10), 10, 20);
+    const timeLimit = clamp(parseInt(els.timeLimit.value || "8",10), 2, 10);
+    const totalQuestions = clamp(parseInt(els.totalQuestions.value || "120",10), 100, 500);
+    const difficulty = els.difficulty.value;
+    return { maxTable, timeLimit, totalQuestions, difficulty };
+  }
+
+  // Scoring
+  function computeScoring(settings){
+    const { maxTable, timeLimit, totalQuestions, difficulty } = settings;
+
+    const levelFactor = 1 + (maxTable - 10) * 0.06;
+    const timeFactor = 1 + (10 - timeLimit) * 0.05;
+    const countFactor = 1 + (totalQuestions - 100) * 0.00075;
+
+    const diff = {
+      easy: { reveal: 1.00, penalty: 1.00 },
+      hard: { reveal: 1.18, penalty: 1.12 },
+      insane:{ reveal: 1.35, penalty: 1.25 },
+    }[difficulty] || { reveal: 1.18, penalty: 1.12 };
+
+    const baseCorrect = 10;
+    const correctPoints = Math.round(baseCorrect * levelFactor * timeFactor);
+    const wrongPenalty = Math.round((correctPoints * 0.70 + 3) * diff.penalty);
+    const streakBonusUnit = Math.max(1, Math.round(correctPoints * 0.10));
+    const targetScore = Math.round(
+      correctPoints * totalQuestions * 0.55 * countFactor * diff.reveal
+    );
+
+    return { correctPoints, wrongPenalty, streakBonusUnit, targetScore };
+  }
+
+  // Questions exclude 1 and 2
+  function makeQuestion(maxTable){
+    const a = randInt(3, maxTable);
+    const b = randInt(3, maxTable);
+    return { a, b, ans: a*b };
+  }
+  function randInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Screen switch
+  function showScreen(which){
+    els.setupScreen.classList.toggle("hidden", which !== "setup");
+    els.gameScreen.classList.toggle("hidden", which !== "game");
+    els.resultScreen.classList.toggle("hidden", which !== "result");
+  }
+
+  // Robust image loader with fallback
+  function setRevealImage(url){
+    els.revealImg.onerror = () => {
+      els.revealImg.onerror = null;
+      els.revealImg.src = FALLBACK_IMG;
+    };
+    els.revealImg.src = url;
+  }
+
+  // Start game
+  function startGame(){
+    const settings = readSettings();
+    const scoring = computeScoring(settings);
+
+    state.settings = settings;
+    state.scoring = scoring;
+
+    state.index = 0;
+    state.total = settings.totalQuestions;
+    state.score = 0;
+    state.correct = 0;
+    state.wrong = 0;
+    state.streak = 0;
+    state.paused = false;
+
+    // Sticker per game
+    const img = STICKER_IMAGES[randInt(0, STICKER_IMAGES.length - 1)];
+    setRevealImage(img);
+
+    state.revealTarget = scoring.targetScore;
+
+    // UI
+    els.qTotal.textContent = String(state.total);
+    els.best.textContent = String(loadBest());
+    els.target.textContent = String(state.revealTarget);
+    els.btnQuit.classList.remove("hidden");
+
+    showScreen("game");
+    updateReveal();
+    nextQuestion();
+  }
+
+  // Timer
+  function stopTimer(){
+    if(state.rafId){
+      cancelAnimationFrame(state.rafId);
+      state.rafId = null;
+    }
+  }
+  function startTimer(seconds){
+    stopTimer();
+    state.remainingMs = seconds * 1000;
+    state.startedAt = performance.now();
+    els.timerFill.style.transform = `scaleX(1)`;
+
+    const tick = () => {
+      if(state.paused){
+        state.startedAt = performance.now();
+        state.rafId = requestAnimationFrame(tick);
+        return;
+      }
+      const now = performance.now();
+      const dt = now - state.startedAt;
+      state.startedAt = now;
+      state.remainingMs -= dt;
+
+      const ratio = clamp(state.remainingMs / (seconds*1000), 0, 1);
+      els.timerFill.style.transform = `scaleX(${ratio})`;
+
+      if(state.remainingMs <= 0){
+        stopTimer();
+        handleWrong(true);
+        return;
+      }
+      state.rafId = requestAnimationFrame(tick);
+    };
+    state.rafId = requestAnimationFrame(tick);
+  }
+
+  // Next question
+  function nextQuestion(){
+    if(state.index >= state.total){
+      endGame();
+      return;
+    }
+    state.current = makeQuestion(state.settings.maxTable);
+    state.index += 1;
+
+    els.qIndex.textContent = String(state.index);
+    els.questionText.textContent = `${state.current.a} × ${state.current.b} = ?`;
+    els.answerInput.value = "";
+    els.answerInput.focus();
+
+    setFeedback("", "");
+    startTimer(state.settings.timeLimit);
+    renderStats();
+  }
+
+  function setFeedback(text, type){
+    els.feedback.textContent = text;
+    els.feedback.classList.remove("good","bad");
+    if(type) els.feedback.classList.add(type);
+  }
+
+  // Submit
+  function submitAnswer(){
+    if(!state.current) return;
+    if(state.paused) return;
+
+    const val = els.answerInput.value.trim();
+    if(val === "") return;
+
+    stopTimer();
+    const n = Number(val);
+
+    if(n === state.current.ans) handleCorrect();
+    else handleWrong(false);
+  }
+
+  function handleCorrect(){
+    state.correct += 1;
+    state.streak += 1;
+
+    const { correctPoints, streakBonusUnit } = state.scoring;
+    const bonus = Math.min(8, Math.floor(state.streak / 3)) * streakBonusUnit;
+
+    state.score += (correctPoints + bonus);
+    setFeedback(`Doğru! +${correctPoints}${bonus?` (+${bonus} seri bonusu)`: ""}`, "good");
+    afterAnswer();
+  }
+
+  function handleWrong(isTimeout){
+    state.wrong += 1;
+    state.streak = 0;
+
+    const { wrongPenalty } = state.scoring;
+    state.score -= wrongPenalty;
+
+    const msg = isTimeout
+      ? `Süre doldu! -${wrongPenalty} (Doğru cevap: ${state.current.ans})`
+      : `Yanlış! -${wrongPenalty} (Doğru cevap: ${state.current.ans})`;
+
+    setFeedback(msg, "bad");
+    afterAnswer();
+  }
+
+  function afterAnswer(){
+    state.score = Math.max(0, state.score);
+    renderStats();
+    updateReveal();
+
+    setTimeout(() => nextQuestion(), 650);
+  }
+
+  function renderStats(){
+    els.score.textContent = String(state.score);
+    els.streak.textContent = String(state.streak);
+    els.correct.textContent = String(state.correct);
+    els.wrong.textContent = String(state.wrong);
+    els.best.textContent = String(loadBest());
+  }
+
+  // Reveal logic with hard lock until target score
+  function updateReveal(){
+    const t = state.revealTarget || 1;
+
+    // LOCK: until target reached, keep totally unrecognizable
+    if(state.score < t){
+      els.clarity.textContent = `0%`;
+      els.revealImg.style.filter = `blur(38px) saturate(0.2) contrast(1.1) brightness(0.9)`;
+      els.pixelLayer.style.opacity = "0.98";
+      els.veil.style.backdropFilter = `blur(18px)`;
+      return;
+    }
+
+    // After unlock: ratio from t..(t*1.6)
+    const postRatio = clamp((state.score - t) / (t * 0.6), 0, 1);
+
+    const clarity = Math.round(postRatio * 88);
+    els.clarity.textContent = `${clarity}%`;
+
+    const blur = (22 - postRatio * 16);
+    const hue = 18 + (1 - postRatio) * 70;
+
+    els.revealImg.style.filter =
+      `blur(${blur.toFixed(1)}px) saturate(${(0.7 + postRatio*0.5).toFixed(2)}) contrast(1.05) hue-rotate(${hue.toFixed(0)}deg)`;
+
+    const pxOpacity = 0.90 - postRatio * 0.55;
+    els.pixelLayer.style.opacity = String(clamp(pxOpacity, 0.35, 0.90));
+
+    els.veil.style.backdropFilter = `blur(${(3 + (1-postRatio)*6).toFixed(1)}px)`;
+  }
+
+  // Pause
+  function togglePause(){
+    if(!state.current) return;
+    state.paused = !state.paused;
+    els.btnPause.innerHTML = state.paused
+      ? `<img alt="devam" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/25B6.svg"> Devam`
+      : `<img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg"> Duraklat`;
+    setFeedback(state.paused ? "Duraklatıldı. Devam için Devam'a bas." : "", "");
+  }
+
+  // End game
+  function endGame(){
+    stopTimer();
+    els.btnQuit.classList.add("hidden");
+
+    const best = loadBest();
+    if(state.score > best) saveBest(state.score);
+
+    els.finalScore.textContent = String(state.score);
+    els.finalCorrect.textContent = String(state.correct);
+    els.finalWrong.textContent = String(state.wrong);
+
+    showScreen("result");
+  }
+
+  // Quit
+  function quitGame(){
+    if(!confirm("Oyunu bitirmek istiyor musun?")) return;
+    endGame();
+  }
+
+  // Bind
+  els.btnStart.addEventListener("click", startGame);
+  els.btnSubmit.addEventListener("click", submitAnswer);
+  els.btnSkip.addEventListener("click", () => { stopTimer(); handleWrong(false); });
+  els.btnPause.addEventListener("click", togglePause);
+  els.btnQuit.addEventListener("click", quitGame);
+
+  els.btnPlayAgain.addEventListener("click", startGame);
+  els.btnBackToSetup.addEventListener("click", () => {
+    stopTimer();
+    els.btnQuit.classList.add("hidden");
+    showScreen("setup");
+  });
+
+  // Init
+  els.best.textContent = String(loadBest());
+  setRevealImage(FALLBACK_IMG); // initial image
+  updateReveal();
+
+</script>
+
+</body>
+</html>
