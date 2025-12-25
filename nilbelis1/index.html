@@ -107,6 +107,7 @@
   </style>
 </head>
 <body>
+<canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:9999;"></canvas>
 <div class="app">
   <section class="card" id="mainCard">
     <div class="header">
@@ -150,7 +151,7 @@
           <button class="btn" id="btnFitMode"><img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">Contain Mod: Kapalı</button>
           <button class="btn ghost" id="btnTestImages"><img alt="check" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">Resimleri Test Et</button>
         </div>
-        <div class="tiny" style="margin-top:6px">Resimler: <code>/assets/stickers/sticker-01..04</code>, <code>sticker-01..03</code>, <code>sticker-01..03</code></div>
+        <div class="tiny" style="margin-top:6px">Resimler: <code>/assets/stickers/sticker-01..10.jpg</code> (istersen uzantıları güncelleyebilirsin)</div>
       </div>
 
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
@@ -242,17 +243,18 @@
 </div>
 
 <script>
-  const STICKERS_BY_DIFFICULTY = {
-    easy: [
-      "assets/stickers/sticker-01.jpg","assets/stickers/sticker-02.jpg","assets/stickers/sticker-03.jpg","assets/stickers/sticker-04.jpg"
-    ],
-    hard: [
-      "assets/stickers/sticker-05.jpg","assets/stickers/sticker-06.jpg","assets/stickers/sticker-07.jpg"
-    ],
-    insane: [
-      "assets/stickers/sticker-08.jpg","assets/stickers/sticker-09.jpg","assets/stickers/sticker-10.jpg"
-    ]
-  };
+  const STICKER_IMAGES = [
+    "assets/stickers/sticker-01.jpg",
+    "assets/stickers/sticker-02.jpg",
+    "assets/stickers/sticker-03.jpg",
+    "assets/stickers/sticker-04.jpg",
+    "assets/stickers/sticker-05.jpg",
+    "assets/stickers/sticker-06.jpg",
+    "assets/stickers/sticker-07.jpg",
+    "assets/stickers/sticker-08.jpg",
+    "assets/stickers/sticker-09.jpg",
+    "assets/stickers/sticker-10.jpg"
+  ];
   const FALLBACK_IMG = "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F47E.svg";
   const MUSIC_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e1f0c1b08.mp3?filename=happy-kids-112193.mp3";
   const SFX_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_74b9b3a8de.mp3?filename=success-fanfare-trumpets-6185.mp3";
@@ -321,8 +323,9 @@
   const BEST_KEY = "nilbelis_mul_best_score_v4";
   // Confetti (Sticker %100 olunca)
   const confettiCanvas = document.getElementById("confettiCanvas");
-  const cctx = confettiCanvas.getContext("2d");
+  const cctx = confettiCanvas ? confettiCanvas.getContext("2d") : null;
   function resizeConfetti(){
+    if(!confettiCanvas || !cctx) return;
     confettiCanvas.width = window.innerWidth * devicePixelRatio;
     confettiCanvas.height = window.innerHeight * devicePixelRatio;
     cctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
@@ -331,6 +334,7 @@
   resizeConfetti();
 
   function fireConfetti(){
+    if(!confettiCanvas || !cctx) return;
     const W = window.innerWidth, H = window.innerHeight;
     const particles = [];
     const count = 160;
@@ -452,8 +456,7 @@
   }
   async function testImages(){
     const missing = [];
-    const all = Object.values(STICKERS_BY_DIFFICULTY).flat();
-    for(const url of all){
+    for(const url of STICKER_IMAGES){
       const ok = await new Promise((resolve) => {
         const img = new Image();
         img.onload = () => resolve(true);
@@ -480,8 +483,7 @@
     state.fullScore   = scoring.fullScore;
     state.maxPossibleScore = scoring.maxPossibleScore;
 
-    const pool = STICKERS_BY_DIFFICULTY[settings.difficulty] || Object.values(STICKERS_BY_DIFFICULTY).flat();
-    setRevealImage(pool[randInt(0, pool.length - 1)]);
+    setRevealImage(STICKER_IMAGES[randInt(0, STICKER_IMAGES.length - 1)]);
 
     els.qTotal.textContent = String(state.total);
     els.best.textContent = String(loadBest());
@@ -675,6 +677,5 @@
   updateReveal();
 </script>
 
-<canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:9999;"></canvas>
 </body>
 </html>
