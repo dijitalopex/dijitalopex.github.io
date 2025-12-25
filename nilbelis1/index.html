@@ -9,150 +9,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1:#fff7fb;
-      --bg2:#eef6ff;
-      --card:#ffffffcc;
-      --ink:#1f2a44;
-      --muted:#6b7280;
-      --accent:#ff4da6;
-      --accent2:#3b82f6;
-      --good:#16a34a;
-      --bad:#ef4444;
+      --bg1:#fff7fb; --bg2:#eef6ff; --card:#ffffffcc;
+      --ink:#1f2a44; --muted:#6b7280;
+      --accent:#ff4da6; --accent2:#3b82f6;
+      --good:#16a34a; --bad:#ef4444;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
       --radius:22px;
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:"Baloo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      color:var(--ink);
+      margin:0; font-family:"Baloo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--ink);
       background:
         radial-gradient(1200px 900px at 10% 10%, var(--bg1), transparent 60%),
         radial-gradient(1200px 900px at 90% 20%, var(--bg2), transparent 60%),
         linear-gradient(120deg, #ffffff, #f7fbff);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:18px;
     }
-
-    .app{
-      width:min(1120px, 100%);
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:start;
-    }
-
-    @media (max-width: 960px){
-      .app{grid-template-columns: 1fr;}
-    }
-
-    .card{
-      background:var(--card);
-      border: 1px solid rgba(0,0,0,.06);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-      backdrop-filter: blur(10px);
-    }
-
-    .header{
-      padding:16px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      border-bottom:1px solid rgba(0,0,0,.06);
+    .app{width:min(1120px, 100%); display:grid; grid-template-columns: 1.15fr .85fr; gap:18px; align-items:start;}
+    @media (max-width: 960px){ .app{grid-template-columns: 1fr;} }
+    .card{background:var(--card); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; backdrop-filter: blur(10px);}
+    .header{padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid rgba(0,0,0,.06);
       background: linear-gradient(90deg, rgba(255,77,166,.18), rgba(59,130,246,.12));
     }
-
     .brand{display:flex; align-items:center; gap:12px;}
-    .brand .logo{
-      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
-      background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow: 0 8px 18px rgba(0,0,0,.06);
-    }
+    .brand .logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid rgba(0,0,0,.07);box-shadow: 0 8px 18px rgba(0,0,0,.06);}
     .brand h1{margin:0;font-size:20px;line-height:1.1}
     .brand p{margin:0;color:var(--muted);font-size:13px}
-
     .header .actions{display:flex; gap:10px; flex-wrap:wrap}
-
     .btn{
-      appearance:none; border:0; padding:10px 12px; border-radius:16px;
-      background:#fff; color:var(--ink); cursor:pointer; font-weight:800;
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
-      border:1px solid rgba(0,0,0,.06);
-      display:flex; align-items:center; gap:8px;
-      transition: transform .08s ease, box-shadow .2s ease;
-      user-select:none;
+      appearance:none; border:0; padding:10px 12px; border-radius:16px; background:#fff; color:var(--ink);
+      cursor:pointer; font-weight:800; box-shadow: 0 10px 20px rgba(0,0,0,.06); border:1px solid rgba(0,0,0,.06);
+      display:flex; align-items:center; gap:8px; transition: transform .08s ease, box-shadow .2s ease; user-select:none;
     }
     .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,0,0,.09)}
     .btn:active{transform: translateY(0px)}
     .btn.primary{background: linear-gradient(90deg, rgba(255,77,166,1), rgba(59,130,246,1)); color:white; border-color: transparent}
     .btn.danger{background: rgba(239,68,68,.10); color: var(--bad)}
     .btn.ghost{background: transparent; box-shadow:none; border:1px dashed rgba(0,0,0,.18);}
-
     .content{padding:18px}
-
     .grid{display:grid;grid-template-columns: 1fr 1fr;gap:14px;}
     @media (max-width: 720px){ .grid{grid-template-columns:1fr;} }
-
-    .field{
-      background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px;
-    }
-    .field label{
-      display:flex;justify-content:space-between;align-items:center;gap:10px;
-      font-weight:900;margin-bottom:6px;
-    }
+    .field{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px;}
+    .field label{display:flex;justify-content:space-between;align-items:center;gap:10px;font-weight:900;margin-bottom:6px;}
     .field label span{color:var(--muted); font-weight:800; font-size:12px}
-    input[type="number"], select{
-      width:100%; padding:10px 12px; border-radius:14px;
-      border:1px solid rgba(0,0,0,.14); font-size:16px; font-weight:800; outline:none; background:#fff;
-    }
-
-    .hint{
-      margin-top:10px; padding:12px; border-radius:18px;
-      background: rgba(59,130,246,.08);
-      border:1px dashed rgba(59,130,246,.35);
-      color: #1c3b72; font-weight:800; font-size:14px;
-      line-height:1.35;
-    }
+    input[type="number"], select{width:100%; padding:10px 12px; border-radius:14px; border:1px solid rgba(0,0,0,.14); font-size:16px; font-weight:800; outline:none; background:#fff;}
+    .hint{margin-top:10px; padding:12px; border-radius:18px; background: rgba(59,130,246,.08); border:1px dashed rgba(59,130,246,.35); color:#1c3b72; font-weight:800; font-size:14px; line-height:1.35;}
 
     /* GAME */
     .questionCard{padding:18px; display:flex; flex-direction:column; gap:14px;}
     .questionTop{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
-    .pill{
-      padding:8px 10px;border-radius:999px;
-      background: rgba(255,77,166,.12);
-      border:1px solid rgba(255,77,166,.25);
-      font-weight:900;font-size:13px;
-      display:flex; align-items:center; gap:8px;
-    }
+    .pill{padding:8px 10px;border-radius:999px;background: rgba(255,77,166,.12);border:1px solid rgba(255,77,166,.25);font-weight:900;font-size:13px;display:flex; align-items:center; gap:8px;}
     .pill.blue{background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.25)}
-
     .timerBar{width:100%;height:12px;border-radius:999px;background: rgba(0,0,0,.06);overflow:hidden;border:1px solid rgba(0,0,0,.06);}
-    .timerFill{height:100%;width:100%;background: linear-gradient(90deg, rgba(16,185,129,1), rgba(59,130,246,1), rgba(255,77,166,1));
-      transform-origin:left;transform: scaleX(1);transition: transform .15s linear;}
-
-    .qBig{
-      font-size:56px;font-weight:900;letter-spacing: .5px;margin:0;text-align:center;
-      padding:20px 12px;border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.65));
-      border:1px solid rgba(0,0,0,.06);box-shadow: 0 16px 30px rgba(0,0,0,.06);
-    }
-
+    .timerFill{height:100%;width:100%;background: linear-gradient(90deg, rgba(16,185,129,1), rgba(59,130,246,1), rgba(255,77,166,1)); transform-origin:left;transform: scaleX(1);transition: transform .15s linear;}
+    .qBig{font-size:56px;font-weight:900;letter-spacing:.5px;margin:0;text-align:center;padding:20px 12px;border-radius:22px;background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.65));border:1px solid rgba(0,0,0,.06);box-shadow: 0 16px 30px rgba(0,0,0,.06);}
     .answerRow{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;}
-    .answerInput{
-      width:min(220px, 100%);text-align:center;font-size:22px;padding:12px 14px;
-      border-radius:16px;border:2px solid rgba(0,0,0,.14);outline:none;font-weight:900;
-    }
+    .answerInput{width:min(220px, 100%);text-align:center;font-size:22px;padding:12px 14px;border-radius:16px;border:2px solid rgba(0,0,0,.14);outline:none;font-weight:900;}
     .answerInput:focus{border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 6px rgba(59,130,246,.14)}
-
-    .feedback{min-height: 24px;font-weight:900;text-align:center;}
-    .feedback.good{color:var(--good)}
-    .feedback.bad{color:var(--bad)}
-
+    .feedback{min-height:24px;font-weight:900;text-align:center;}
+    .feedback.good{color:var(--good)} .feedback.bad{color:var(--bad)}
     .stats{display:grid;grid-template-columns: 1fr 1fr;gap:10px;}
     .stat{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:10px;}
     .stat b{display:block; font-size:18px}
@@ -160,23 +75,22 @@
 
     /* RIGHT: REVEAL */
     .revealWrap{padding:18px;display:flex;flex-direction:column;gap:12px}
-    .revealFrame{
-      position:relative;border-radius: 22px;overflow:hidden;border:1px solid rgba(0,0,0,.08);
-      background:#fff;box-shadow: 0 16px 30px rgba(0,0,0,.06);
-      aspect-ratio: 4 / 3;display:grid;place-items:center;
-    }
-    .revealFrame img{
-      width:100%;height:100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      filter: blur(38px) saturate(.2) contrast(1.1) brightness(.9);
-      transition: filter .35s ease, object-fit .25s ease;
-    }
+    .revealFrame{position:relative;border-radius:22px;overflow:hidden;border:1px solid rgba(0,0,0,.08);background:#fff;box-shadow: 0 16px 30px rgba(0,0,0,.06);aspect-ratio:4/3;display:grid;place-items:center;}
+    .revealFrame img{width:100%;height:100%;object-fit:cover;transform: scale(1.02);filter: blur(38px) saturate(.2) contrast(1.1) brightness(.9);transition: filter .35s ease, object-fit .25s ease;}
     .revealFrame.contain img{ object-fit: contain; background:#fff; transform:none; }
 
-    .pixelLayer{
-      position:absolute;inset:0;pointer-events:none;
-      background:
+    .revealFrame.halo{
+      box-shadow: 0 0 0 0 rgba(255,77,166,.0), 0 16px 30px rgba(0,0,0,.06);
+      animation: haloPulse 1.2s ease-in-out 0s 3;
+    }
+    @keyframes haloPulse{
+      0%{ box-shadow: 0 0 0 0 rgba(255,77,166,.0), 0 16px 30px rgba(0,0,0,.06); }
+      35%{ box-shadow: 0 0 0 18px rgba(255,77,166,.18), 0 16px 30px rgba(0,0,0,.06); }
+      70%{ box-shadow: 0 0 0 28px rgba(59,130,246,.14), 0 16px 30px rgba(0,0,0,.06); }
+      100%{ box-shadow: 0 0 0 0 rgba(255,77,166,.0), 0 16px 30px rgba(0,0,0,.06); }
+    }
+
+    .pixelLayer{position:absolute;inset:0;pointer-events:none;background:
         radial-gradient(circle at 20% 30%, rgba(255,77,166,.28), transparent 45%),
         radial-gradient(circle at 70% 25%, rgba(59,130,246,.25), transparent 45%),
         radial-gradient(circle at 50% 70%, rgba(16,185,129,.20), transparent 45%),
@@ -184,13 +98,7 @@
       mix-blend-mode: overlay; opacity:.98; transition: opacity .35s ease;
     }
     .veil{position:absolute;inset:0;background: rgba(255,255,255,.02); backdrop-filter: blur(18px); transition: backdrop-filter .35s ease;}
-
-    .revealBadge{
-      position:absolute;bottom:12px;left:12px;right:12px;
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      background: rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.06);
-      border-radius: 18px;padding:10px 12px;font-weight:900;
-    }
+    .revealBadge{position:absolute;bottom:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;background: rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:10px 12px;font-weight:900;}
     .tiny{font-size:12px; color:var(--muted); font-weight:900}
     .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center}
     .chip{padding:8px 10px;border-radius:999px;background: rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);font-weight:900;font-size:12.5px}
@@ -199,108 +107,63 @@
   </style>
 </head>
 <body>
-
 <div class="app">
-
-  <!-- LEFT -->
   <section class="card" id="mainCard">
     <div class="header">
       <div class="brand">
-        <div class="logo">
-          <img alt="ikon" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg">
-        </div>
-        <div>
-          <h1>Nil Belis Çarpım Macerası</h1>
-          <p>Hızlı çarp, puan topla, gizli sticker aç.</p>
-        </div>
+        <div class="logo"><img alt="ikon" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg"></div>
+        <div><h1>Nil Belis Çarpım Macerası</h1><p>Hızlı çarp, puan topla, gizli sticker aç.</p></div>
       </div>
       <div class="actions">
-        <button class="btn" id="btnMusic" title="Müzik aç/kapat">
-          <img alt="müzik" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3B5.svg">
-          Müzik
-        </button>
-        <button class="btn danger hidden" id="btnQuit">
-          <img alt="çık" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F6AB.svg">
-          Bitir
-        </button>
+        <button class="btn" id="btnMusic"><img alt="müzik" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3B5.svg">Müzik</button>
+        <button class="btn danger hidden" id="btnQuit"><img alt="çık" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F6AB.svg">Bitir</button>
       </div>
     </div>
 
-    <!-- SETUP -->
     <div class="content" id="setupScreen">
       <div class="grid">
+        <div class="field"><label>Kaçlara kadar? <span>(min 10)</span></label><input id="maxTable" type="number" min="10" max="20" value="12" inputmode="numeric" /></div>
+        <div class="field"><label>Soru süresi (sn) <span>(max 10)</span></label><input id="timeLimit" type="number" min="2" max="10" value="8" inputmode="numeric" /></div>
+        <div class="field"><label>Oyun (soru) sayısı <span>(min 100)</span></label><input id="totalQuestions" type="number" min="100" max="500" value="120" inputmode="numeric" /></div>
         <div class="field">
-          <label>Kaçlara kadar? <span>(min 10)</span></label>
-          <input id="maxTable" type="number" min="10" max="20" value="12" inputmode="numeric" />
-        </div>
-        <div class="field">
-          <label>Soru süresi (sn) <span>(max 10)</span></label>
-          <input id="timeLimit" type="number" min="2" max="10" value="8" inputmode="numeric" />
-        </div>
-        <div class="field">
-          <label>Oyun (soru) sayısı <span>(min 100)</span></label>
-          <input id="totalQuestions" type="number" min="100" max="500" value="120" inputmode="numeric" />
-        </div>
-        <div class="field">
-          <label>Zorluk <span>(kilit yüzdesi)</span></label>
+          <label>Zorluk <span>(daha kolay kilit)</span></label>
           <select id="difficulty">
-            <option value="easy">Orta (%70)</option>
-            <option value="hard">Zor (%75)</option>
-            <option value="insane">Çok Zor (%80)</option>
+            <option value="easy">Orta (Açılır: %52, Tam: %89)</option>
+            <option value="hard">Zor (Açılır: %57, Tam: %92)</option>
+            <option value="insane">Çok Zor (Açılır: %62, Tam: %94)</option>
           </select>
         </div>
       </div>
 
       <div class="hint">
-        <b>Kurallar:</b>
+        <b>Yeni sistem:</b>
         <ul style="margin:8px 0 0 18px">
-          <li>1'ler ve 2'ler yok (3'ten başlar).</li>
-          <li>Doğru +puan, yanlış veya süre biterse -ceza.</li>
-          <li>Sticker <b>kilitli</b> başlar. Teorik maksimum puanın belli yüzdesine gelince açılır.</li>
+          <li>Kilit eşiği artık daha düşük: <b>%55-%65</b> bandında açılır.</li>
+          <li>Yeterli puana ulaşınca, oyun bitmeden bile resim <b>%100 net</b> olabilir.</li>
+          <li>Ceza puanı var, o yüzden doğru/seri hâlâ önemli.</li>
         </ul>
       </div>
 
       <div class="hint">
-        <b>Görsel ayarı:</b> Bazı resimler çok kırpılıyorsa <b>Contain Mod</b> aç.
+        <b>Görsel ayarı:</b> Kırpma olursa <b>Contain Mod</b> aç.
         <div class="row" style="margin-top:10px">
-          <button class="btn" id="btnFitMode">
-            <img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">
-            Contain Mod: Kapalı
-          </button>
-          <button class="btn ghost" id="btnTestImages" title="Eksik dosya var mı kontrol eder">
-            <img alt="check" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
-            Resimleri Test Et
-          </button>
+          <button class="btn" id="btnFitMode"><img alt="fit" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">Contain Mod: Kapalı</button>
+          <button class="btn ghost" id="btnTestImages"><img alt="check" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">Resimleri Test Et</button>
         </div>
-        <div class="tiny" style="margin-top:6px">
-          Resimler: <code>/assets/stickers/sticker-01..10</code> (png/jpg/jpeg olabilir)
-        </div>
+        <div class="tiny" style="margin-top:6px">Resimler: <code>/assets/stickers/easy-01..04</code>, <code>medium-01..03</code>, <code>hard-01..03</code></div>
       </div>
 
       <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-        <button class="btn primary" id="btnStart">
-          <img alt="başla" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg">
-          Başla Nil Belis!
-        </button>
+        <button class="btn primary" id="btnStart"><img alt="başla" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F680.svg">Başla Nil Belis!</button>
       </div>
     </div>
 
-    <!-- GAME -->
     <div class="content hidden" id="gameScreen">
       <div class="card questionCard" style="box-shadow:none; border:none; background:transparent">
         <div class="questionTop">
-          <div class="pill">
-            <img alt="soru" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2753.svg">
-            <span>Soru: <b id="qIndex">1</b> / <b id="qTotal">120</b></span>
-          </div>
-          <div class="pill blue">
-            <img alt="puan" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3C6.svg">
-            <span>Puan: <b id="score">0</b></span>
-          </div>
-          <div class="pill" style="background:rgba(16,185,129,.12); border-color: rgba(16,185,129,.25)">
-            <img alt="seri" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F525.svg">
-            <span>Seri: <b id="streak">0</b></span>
-          </div>
+          <div class="pill"><img alt="soru" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2753.svg"><span>Soru: <b id="qIndex">1</b> / <b id="qTotal">120</b></span></div>
+          <div class="pill blue"><img alt="puan" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F3C6.svg"><span>Puan: <b id="score">0</b></span></div>
+          <div class="pill" style="background:rgba(16,185,129,.12); border-color: rgba(16,185,129,.25)"><img alt="seri" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F525.svg"><span>Seri: <b id="streak">0</b></span></div>
         </div>
 
         <div class="timerBar"><div class="timerFill" id="timerFill"></div></div>
@@ -308,10 +171,7 @@
 
         <div class="answerRow">
           <input class="answerInput" id="answerInput" type="text" inputmode="numeric" autocomplete="off" placeholder="Cevap" />
-          <button class="btn primary" id="btnSubmit">
-            <img alt="ok" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">
-            Gönder
-          </button>
+          <button class="btn primary" id="btnSubmit"><img alt="ok" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2705.svg">Gönder</button>
         </div>
 
         <div class="feedback" id="feedback"></div>
@@ -324,26 +184,17 @@
         </div>
 
         <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:6px">
-          <button class="btn" id="btnSkip">
-            <img alt="geç" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23E9.svg">
-            Geç
-          </button>
-          <button class="btn" id="btnPause">
-            <img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg">
-            Duraklat
-          </button>
+          <button class="btn" id="btnSkip"><img alt="geç" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23E9.svg">Geç</button>
+          <button class="btn" id="btnPause"><img alt="dur" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/23F8.svg">Duraklat</button>
         </div>
       </div>
     </div>
 
-    <!-- RESULT -->
     <div class="content hidden" id="resultScreen">
       <div class="card" style="box-shadow:none; border:1px solid rgba(0,0,0,.06)">
         <div class="content" style="padding:18px">
           <h2 style="margin:0 0 8px 0">Tebrikler Nil Belis!</h2>
-          <p style="margin:0 0 12px 0; font-weight:900; color:var(--muted)">
-            Oyun bitti. İstersen ayarları değiştirip tekrar oynayabilirsin.
-          </p>
+          <p style="margin:0 0 12px 0; font-weight:900; color:var(--muted)">Oyun bitti. İstersen ayarları değiştirip tekrar oynayabilirsin.</p>
 
           <div class="stats" style="grid-template-columns:1fr 1fr 1fr; margin-top:12px">
             <div class="stat"><b id="finalScore">0</b><span>Toplam Puan</span></div>
@@ -354,31 +205,19 @@
           <div class="hint" id="unlockMsg" style="margin-top:12px"></div>
 
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-            <button class="btn primary" id="btnPlayAgain">
-              <img alt="yeniden" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F504.svg">
-              Tekrar Oyna
-            </button>
-            <button class="btn" id="btnBackToSetup">
-              <img alt="ayar" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2699.svg">
-              Ayarlara Dön
-            </button>
+            <button class="btn primary" id="btnPlayAgain"><img alt="yeniden" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F504.svg">Tekrar Oyna</button>
+            <button class="btn" id="btnBackToSetup"><img alt="ayar" width="18" height="18" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/2699.svg">Ayarlara Dön</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RIGHT -->
   <aside class="card" id="sideCard">
     <div class="header">
       <div class="brand">
-        <div class="logo">
-          <img alt="resim" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg">
-        </div>
-        <div>
-          <h1 style="font-size:18px">Gizli Sticker</h1>
-          <p>Puan topladıkça netleşir</p>
-        </div>
+        <div class="logo"><img alt="resim" width="28" height="28" src="https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F5BC.svg"></div>
+        <div><h1 style="font-size:18px">Gizli Sticker</h1><p>Puan topladıkça netleşir</p></div>
       </div>
     </div>
     <div class="revealWrap">
@@ -392,41 +231,31 @@
         <div class="pixelLayer" id="pixelLayer"></div>
         <div class="veil" id="veil"></div>
         <div class="revealBadge">
-          <div>
-            <div style="font-size:14px">Netlik</div>
-            <div class="tiny">Asla %100 olmaz</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:14px"><b id="clarity">0%</b></div>
-            <div class="tiny">Hedefe göre</div>
-          </div>
+          <div><div style="font-size:14px">Netlik</div><div class="tiny">%100 olabilir</div></div>
+          <div style="text-align:right"><div style="font-size:14px"><b id="clarity">0%</b></div><div class="tiny">Yeterli puana göre</div></div>
         </div>
       </div>
 
-      <div class="hint" style="margin:0">
-        <b>Resim yüklenmezse:</b> Otomatik olarak varsayılan bir ikon gösterilir (fallback).
-      </div>
+      <div class="hint" style="margin:0"><b>Resim yüklenmezse:</b> Otomatik fallback ikon gösterilir.</div>
     </div>
   </aside>
-
 </div>
 
 <script>
-  const STICKER_IMAGES = [
-    "assets/stickers/sticker-01.jpg",
-    "assets/stickers/sticker-02.jpg",
-    "assets/stickers/sticker-03.jpg",
-    "assets/stickers/sticker-04.jpg",
-    "assets/stickers/sticker-05.jpg",
-    "assets/stickers/sticker-06.jpg",
-    "assets/stickers/sticker-07.jpg",
-    "assets/stickers/sticker-08.jpg",
-    "assets/stickers/sticker-09.jpg",
-    "assets/stickers/sticker-10.jpg"
-  ];
-
+  const STICKERS_BY_DIFFICULTY = {
+    easy: [
+      "assets/stickers/easy-01.jpg","assets/stickers/easy-02.jpg","assets/stickers/easy-03.jpg","assets/stickers/easy-04.jpg"
+    ],
+    hard: [
+      "assets/stickers/medium-01.jpg","assets/stickers/medium-02.jpg","assets/stickers/medium-03.jpg"
+    ],
+    insane: [
+      "assets/stickers/hard-01.jpg","assets/stickers/hard-02.jpg","assets/stickers/hard-03.jpg"
+    ]
+  };
   const FALLBACK_IMG = "https://raw.githubusercontent.com/hfg-gmuend/openmoji/master/color/svg/1F47E.svg";
   const MUSIC_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_0e1f0c1b08.mp3?filename=happy-kids-112193.mp3";
+  const SFX_URL = "https://cdn.pixabay.com/download/audio/2022/03/15/audio_74b9b3a8de.mp3?filename=success-fanfare-trumpets-6185.mp3";
 
   const els = {
     setupScreen: document.getElementById("setupScreen"),
@@ -480,55 +309,86 @@
   };
 
   const state = {
-    settings: null,
-    scoring: null,
-    current: null,
-    index: 0,
-    total: 0,
-    score: 0,
-    correct: 0,
-    wrong: 0,
-    streak: 0,
-    paused: false,
-
-    remainingMs: 0,
-    startedAt: 0,
-    rafId: null,
-
-    revealUnlockScore: 0,
-    revealMaxPossibleScore: 0,
-
-    audio: null,
-    musicOn: false,
-
-    containMode: false,
+    settings:null, scoring:null, current:null,
+    index:0, total:0, score:0, correct:0, wrong:0, streak:0, paused:false,
+    remainingMs:0, startedAt:0, rafId:null,
+    unlockScore:0, fullScore:0, maxPossibleScore:0,
+    audio:null, musicOn:false, containMode:false,
+    sfx:null, sfxOn:true,
+    confettiFired:false,
   };
 
-  const BEST_KEY = "nilbelis_mul_best_score_v3";
+  const BEST_KEY = "nilbelis_mul_best_score_v4";
+  // Confetti (Sticker %100 olunca)
+  const confettiCanvas = document.getElementById("confettiCanvas");
+  const cctx = confettiCanvas.getContext("2d");
+  function resizeConfetti(){
+    confettiCanvas.width = window.innerWidth * devicePixelRatio;
+    confettiCanvas.height = window.innerHeight * devicePixelRatio;
+    cctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  window.addEventListener("resize", resizeConfetti);
+  resizeConfetti();
+
+  function fireConfetti(){
+    const W = window.innerWidth, H = window.innerHeight;
+    const particles = [];
+    const count = 160;
+    for(let i=0;i<count;i++){
+      particles.push({
+        x: Math.random()*W,
+        y: -20 - Math.random()*H*0.2,
+        r: 3 + Math.random()*5,
+        vx: -2 + Math.random()*4,
+        vy: 3 + Math.random()*5,
+        rot: Math.random()*Math.PI,
+        vr: -0.2 + Math.random()*0.4,
+        life: 0,
+        ttl: 120 + Math.random()*60
+      });
+    }
+    let frame = 0;
+    (function anim(){
+      frame++;
+      cctx.clearRect(0,0,W,H);
+      for(const p of particles){
+        p.life++;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        // slight gravity
+        p.vy += 0.03;
+        const alpha = 1 - (p.life/p.ttl);
+        if(alpha <= 0) continue;
+        cctx.save();
+        cctx.globalAlpha = alpha;
+        cctx.translate(p.x, p.y);
+        cctx.rotate(p.rot);
+        // random bright color
+        cctx.fillStyle = `hsl(${Math.random()*360}, 90%, 60%)`;
+        cctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.6);
+        cctx.restore();
+      }
+      if(frame < 180) requestAnimationFrame(anim);
+      else cctx.clearRect(0,0,W,H);
+    })();
+  }
+
+  const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
   function loadBest(){ const v = Number(localStorage.getItem(BEST_KEY) || 0); return Number.isFinite(v) ? v : 0; }
   function saveBest(v){ localStorage.setItem(BEST_KEY, String(v)); }
-  const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
 
   els.answerInput.addEventListener("input", () => { els.answerInput.value = els.answerInput.value.replace(/[^0-9]/g, ""); });
   els.answerInput.addEventListener("keydown", (e) => { if(e.key === "Enter") submitAnswer(); });
 
-  function ensureAudio(){
-    if(state.audio) return;
-    const a = new Audio(MUSIC_URL);
-    a.loop = true;
-    a.volume = 0.6;
-    state.audio = a;
-  }
+  function ensureAudio(){ if(state.audio) return; const a = new Audio(MUSIC_URL); a.loop = true; a.volume = 0.6; state.audio = a; }
+  function ensureSfx(){ if(state.sfx) return; const s = new Audio(SFX_URL); s.volume = 0.75; state.sfx = s; }
+  function playSfx(){ if(!state.sfxOn) return; ensureSfx(); try{ state.sfx.currentTime = 0; state.sfx.play().catch(()=>{});}catch(e){} }
+
   function toggleMusic(){
-    ensureAudio();
-    state.musicOn = !state.musicOn;
-    if(state.musicOn){
-      state.audio.play().catch(()=>{});
-      els.btnMusic.classList.add("primary");
-    } else {
-      state.audio.pause();
-      els.btnMusic.classList.remove("primary");
-    }
+    ensureAudio(); state.musicOn = !state.musicOn;
+    if(state.musicOn){ state.audio.play().catch(()=>{}); els.btnMusic.classList.add("primary"); }
+    else { state.audio.pause(); els.btnMusic.classList.remove("primary"); }
   }
   els.btnMusic.addEventListener("click", toggleMusic);
 
@@ -549,23 +409,30 @@
     return { maxTable, timeLimit, totalQuestions, difficulty };
   }
 
+  // NEW: easier overall + full reveal can be achieved before game ends
   function computeScoring(settings){
     const { maxTable, timeLimit, totalQuestions, difficulty } = settings;
 
-    const levelFactor = 1 + (maxTable - 10) * 0.06;
-    const timeFactor  = 1 + (10 - timeLimit) * 0.05;
-    const diffPenalty = (difficulty === "easy") ? 1.00 : (difficulty === "hard") ? 1.12 : 1.25;
+    const levelFactor = 1 + (maxTable - 10) * 0.05;   // slightly lower than before
+    const timeFactor  = 1 + (10 - timeLimit) * 0.04;  // slightly lower than before
+    const diffPenalty = (difficulty === "easy") ? 0.95 : (difficulty === "hard") ? 1.05 : 1.12; // softer penalties
 
     const baseCorrect = 10;
     const correctPoints = Math.round(baseCorrect * levelFactor * timeFactor);
     const streakBonusUnit = Math.max(1, Math.round(correctPoints * 0.10));
-    const wrongPenalty = Math.round((correctPoints * 0.70 + 3) * diffPenalty);
+    const wrongPenalty = Math.round((correctPoints * 0.60 + 2) * diffPenalty); // less harsh
 
-    const maxPossibleScore = Math.round((correctPoints * totalQuestions) * 1.20);
-    const unlockRatio = (difficulty === "easy") ? 0.70 : (difficulty === "hard") ? 0.75 : 0.80;
+    // "Max possible" includes realistic bonus headroom
+    const maxPossibleScore = Math.round((correctPoints * totalQuestions) * 1.25);
+
+    // Unlock and Full ratios (EASIER)
+    const unlockRatio = (difficulty === "easy") ? 0.52 : (difficulty === "hard") ? 0.57 : 0.62;
+    const fullRatio   = (difficulty === "easy") ? 0.89 : (difficulty === "hard") ? 0.92 : 0.94;
+
     const unlockScore = Math.round(maxPossibleScore * unlockRatio);
+    const fullScore   = Math.round(maxPossibleScore * fullRatio);
 
-    return { correctPoints, wrongPenalty, streakBonusUnit, maxPossibleScore, unlockScore, unlockRatio };
+    return { correctPoints, wrongPenalty, streakBonusUnit, maxPossibleScore, unlockScore, fullScore, unlockRatio, fullRatio };
   }
 
   function randInt(min, max){ return Math.floor(Math.random() * (max - min + 1)) + min; }
@@ -574,39 +441,29 @@
     const b = randInt(3, maxTable);
     return { a, b, ans: a*b };
   }
-
   function showScreen(which){
     els.setupScreen.classList.toggle("hidden", which !== "setup");
     els.gameScreen.classList.toggle("hidden", which !== "game");
     els.resultScreen.classList.toggle("hidden", which !== "result");
   }
-
   function setRevealImage(url){
-    els.revealImg.onerror = () => {
-      els.revealImg.onerror = null;
-      els.revealImg.src = FALLBACK_IMG;
-    };
+    els.revealImg.onerror = () => { els.revealImg.onerror = null; els.revealImg.src = FALLBACK_IMG; };
     els.revealImg.src = url;
   }
-
   async function testImages(){
-    const results = [];
-    for(const url of STICKER_IMAGES){
+    const missing = [];
+    const all = Object.values(STICKERS_BY_DIFFICULTY).flat();
+    for(const url of all){
       const ok = await new Promise((resolve) => {
         const img = new Image();
         img.onload = () => resolve(true);
         img.onerror = () => resolve(false);
         img.src = url + `?cacheBust=${Date.now()}`;
       });
-      results.push({ url, ok });
+      if(!ok) missing.push(url);
     }
-    const missing = results.filter(r => !r.ok);
-    if(missing.length === 0){
-      alert("Harika! Tüm sticker dosyaları bulundu ✅");
-    } else {
-      const list = missing.map(m => m.url).join("\n");
-      alert("Bazı sticker dosyaları bulunamadı ❌\n\n" + list + "\n\nKlasör/isim/uzantı kontrol et.");
-    }
+    if(missing.length === 0) alert("Harika! Tüm sticker dosyaları bulundu ✅");
+    else alert("Bazı sticker dosyaları bulunamadı ❌\n\n" + missing.join("\n") + "\n\nKlasör/isim/uzantı kontrol et.");
   }
   els.btnTestImages.addEventListener("click", testImages);
 
@@ -617,50 +474,34 @@
     state.settings = settings;
     state.scoring = scoring;
 
-    state.index = 0;
-    state.total = settings.totalQuestions;
-    state.score = 0;
-    state.correct = 0;
-    state.wrong = 0;
-    state.streak = 0;
-    state.paused = false;
+    state.index=0; state.total=settings.totalQuestions; state.score=0; state.correct=0; state.wrong=0; state.streak=0; state.paused=false;
+    state.confettiFired = false;
+    state.unlockScore = scoring.unlockScore;
+    state.fullScore   = scoring.fullScore;
+    state.maxPossibleScore = scoring.maxPossibleScore;
 
-    state.revealUnlockScore = scoring.unlockScore;
-    state.revealMaxPossibleScore = scoring.maxPossibleScore;
-
-    const img = STICKER_IMAGES[randInt(0, STICKER_IMAGES.length - 1)];
-    setRevealImage(img);
+    const pool = STICKERS_BY_DIFFICULTY[settings.difficulty] || Object.values(STICKERS_BY_DIFFICULTY).flat();
+    setRevealImage(pool[randInt(0, pool.length - 1)]);
 
     els.qTotal.textContent = String(state.total);
     els.best.textContent = String(loadBest());
-    els.unlockScoreUI.textContent = String(state.revealUnlockScore);
+    els.unlockScoreUI.textContent = String(state.unlockScore);
 
     els.btnQuit.classList.remove("hidden");
-
     showScreen("game");
     updateReveal();
     nextQuestion();
   }
 
-  function stopTimer(){
-    if(state.rafId){
-      cancelAnimationFrame(state.rafId);
-      state.rafId = null;
-    }
-  }
-
+  function stopTimer(){ if(state.rafId){ cancelAnimationFrame(state.rafId); state.rafId=null; } }
   function startTimer(seconds){
     stopTimer();
-    state.remainingMs = seconds * 1000;
+    state.remainingMs = seconds*1000;
     state.startedAt = performance.now();
     els.timerFill.style.transform = `scaleX(1)`;
 
     const tick = () => {
-      if(state.paused){
-        state.startedAt = performance.now();
-        state.rafId = requestAnimationFrame(tick);
-        return;
-      }
+      if(state.paused){ state.startedAt = performance.now(); state.rafId = requestAnimationFrame(tick); return; }
       const now = performance.now();
       const dt = now - state.startedAt;
       state.startedAt = now;
@@ -669,29 +510,20 @@
       const ratio = clamp(state.remainingMs / (seconds*1000), 0, 1);
       els.timerFill.style.transform = `scaleX(${ratio})`;
 
-      if(state.remainingMs <= 0){
-        stopTimer();
-        handleWrong(true);
-        return;
-      }
+      if(state.remainingMs <= 0){ stopTimer(); handleWrong(true); return; }
       state.rafId = requestAnimationFrame(tick);
     };
     state.rafId = requestAnimationFrame(tick);
   }
 
   function nextQuestion(){
-    if(state.index >= state.total){
-      endGame();
-      return;
-    }
+    if(state.index >= state.total){ endGame(); return; }
     state.current = makeQuestion(state.settings.maxTable);
     state.index += 1;
-
     els.qIndex.textContent = String(state.index);
     els.questionText.textContent = `${state.current.a} × ${state.current.b} = ?`;
     els.answerInput.value = "";
     els.answerInput.focus();
-
     setFeedback("", "");
     startTimer(state.settings.timeLimit);
     renderStats();
@@ -704,11 +536,9 @@
   }
 
   function submitAnswer(){
-    if(!state.current) return;
-    if(state.paused) return;
+    if(!state.current || state.paused) return;
     const val = els.answerInput.value.trim();
     if(val === "") return;
-
     stopTimer();
     const n = Number(val);
     if(n === state.current.ans) handleCorrect();
@@ -718,11 +548,9 @@
   function handleCorrect(){
     state.correct += 1;
     state.streak += 1;
-
     const { correctPoints, streakBonusUnit } = state.scoring;
-    const bonus = Math.min(8, Math.floor(state.streak / 3)) * streakBonusUnit;
+    const bonus = Math.min(10, Math.floor(state.streak / 3)) * streakBonusUnit; // slightly more rewarding
     state.score += (correctPoints + bonus);
-
     setFeedback(`Doğru! +${correctPoints}${bonus?` (+${bonus} seri bonusu)`: ""}`, "good");
     afterAnswer();
   }
@@ -730,14 +558,11 @@
   function handleWrong(isTimeout){
     state.wrong += 1;
     state.streak = 0;
-
     const { wrongPenalty } = state.scoring;
     state.score -= wrongPenalty;
-
     const msg = isTimeout
       ? `Süre doldu! -${wrongPenalty} (Doğru cevap: ${state.current.ans})`
       : `Yanlış! -${wrongPenalty} (Doğru cevap: ${state.current.ans})`;
-
     setFeedback(msg, "bad");
     afterAnswer();
   }
@@ -757,14 +582,15 @@
     els.best.textContent = String(loadBest());
   }
 
+  // NEW: 0% until unlockScore, then 0..100% until fullScore
   function updateReveal(){
-    const unlock = state.revealUnlockScore || 1;
-    const maxScore = Math.max(unlock + 1, state.revealMaxPossibleScore || (unlock * 1.25));
+    const unlock = Math.max(1, state.unlockScore || 1);
+    const full = Math.max(unlock + 1, state.fullScore || Math.round(unlock * 1.6));
+
+    const locked = state.score < unlock;
     const overallRatio = clamp(state.score / unlock, 0, 1);
 
     els.progressChip.textContent = `${Math.round(overallRatio * 100)}%`;
-    const locked = state.score < unlock;
-
     els.lockChip.textContent = locked ? "KİLİTLİ" : "AÇILDI";
     els.lockChip.classList.toggle("lock", locked);
 
@@ -776,21 +602,30 @@
       return;
     }
 
-    const postRatio = clamp((state.score - unlock) / (maxScore - unlock), 0, 1);
-
-    const clarity = Math.round(postRatio * 88);
+    // postRatio: unlock..full -> 0..1
+    const postRatio = clamp((state.score - unlock) / (full - unlock), 0, 1);
+    const clarity = Math.round(postRatio * 100);
     els.clarity.textContent = `${clarity}%`;
 
-    const blur = (22 - postRatio * 16);
-    const hue = 18 + (1 - postRatio) * 70;
+    if(clarity >= 100 && !state.confettiFired){
+      state.confettiFired = true;
+      fireConfetti();
+      playSfx();
+      els.revealFrame.classList.add('halo');
+      setTimeout(()=>els.revealFrame.classList.remove('halo'), 3800);
+      setFeedback("Sticker Açıldı! Harikasın Nil Belis!", "good");
+    }
 
-    els.revealImg.style.filter =
-      `blur(${blur.toFixed(1)}px) saturate(${(0.7 + postRatio*0.5).toFixed(2)}) contrast(1.05) hue-rotate(${hue.toFixed(0)}deg)`;
+    // visuals: at 100% -> blur 0, overlays nearly gone
+    const blur = (20 - postRatio * 20);         // 20px -> 0px
+    const hue  = (1 - postRatio) * 40;          // fade extra tint
+    const sat  = 0.85 + postRatio * 0.35;       // 0.85 -> 1.20
+    els.revealImg.style.filter = `blur(${blur.toFixed(1)}px) saturate(${sat.toFixed(2)}) contrast(1.05) hue-rotate(${hue.toFixed(0)}deg)`;
 
-    const pxOpacity = 0.90 - postRatio * 0.55;
-    els.pixelLayer.style.opacity = String(clamp(pxOpacity, 0.35, 0.90));
+    const pxOpacity = 0.85 - postRatio * 0.85;  // 0.85 -> 0
+    els.pixelLayer.style.opacity = String(clamp(pxOpacity, 0, 0.85));
 
-    els.veil.style.backdropFilter = `blur(${(3 + (1-postRatio)*6).toFixed(1)}px)`;
+    els.veil.style.backdropFilter = `blur(${(10 - postRatio*10).toFixed(1)}px)`; // 10 -> 0
   }
 
   function togglePause(){
@@ -813,38 +648,33 @@
     els.finalCorrect.textContent = String(state.correct);
     els.finalWrong.textContent = String(state.wrong);
 
-    const unlock = state.revealUnlockScore || 0;
-    if(state.score >= unlock){
-      els.unlockMsg.textContent = `Sticker kilidi açıldı. Netliği artırmak için daha yüksek puan hedefle! (Eşik: ${unlock})`;
+    if(state.score >= state.fullScore){
+      els.unlockMsg.textContent = `Süper! Sticker tamamen açıldı (%100). (Tam eşiği: ${state.fullScore})`;
+    } else if(state.score >= state.unlockScore){
+      els.unlockMsg.textContent = `Sticker açıldı ve netleşiyor. %100 için biraz daha puan! (Tam eşiği: ${state.fullScore})`;
     } else {
-      els.unlockMsg.textContent = `Sticker henüz açılmadı. Bir sonraki oyunda hedefe yaklaşacağız! (Eşik: ${unlock}, Şu an: ${state.score})`;
+      els.unlockMsg.textContent = `Sticker henüz kilitli. Bir sonraki oyunda açacağız! (Kilit eşiği: ${state.unlockScore})`;
     }
-
     showScreen("result");
   }
 
-  function quitGame(){
-    if(!confirm("Oyunu bitirmek istiyor musun?")) return;
-    endGame();
-  }
+  function quitGame(){ if(!confirm("Oyunu bitirmek istiyor musun?")) return; endGame(); }
 
-  els.btnStart.addEventListener("click", startGame);
+  // Bindings
+  document.getElementById("btnStart").addEventListener("click", startGame);
   els.btnSubmit.addEventListener("click", submitAnswer);
   els.btnSkip.addEventListener("click", () => { stopTimer(); handleWrong(false); });
   els.btnPause.addEventListener("click", togglePause);
   els.btnQuit.addEventListener("click", quitGame);
-
   els.btnPlayAgain.addEventListener("click", startGame);
-  els.btnBackToSetup.addEventListener("click", () => {
-    stopTimer();
-    els.btnQuit.classList.add("hidden");
-    showScreen("setup");
-  });
+  els.btnBackToSetup.addEventListener("click", () => { stopTimer(); els.btnQuit.classList.add("hidden"); showScreen("setup"); });
 
+  // Init
   els.best.textContent = String(loadBest());
   setRevealImage(FALLBACK_IMG);
   updateReveal();
 </script>
 
+<canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:9999;"></canvas>
 </body>
 </html>
